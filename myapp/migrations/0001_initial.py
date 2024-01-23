@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=255)),
                 ('botanical_name', models.CharField(max_length=255)),
                 ('family', models.CharField(max_length=255)),
-                ('Active_compound', models.CharField(max_length=255)),
+                ('active_compound', models.CharField(max_length=255)),
                 ('related_diseae', models.CharField(max_length=255)),
                 ('plant_image', models.ImageField(upload_to=myapp.models.img_plant)),
                 ('part_used', models.CharField(max_length=255)),
