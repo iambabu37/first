@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from myapp.models import *
 
 def about(request):
     return render(request,"my_app/about.html")
@@ -16,7 +17,14 @@ def help(request):
     return render(request,"my_app/help.html")
 
 def search(request):
-    return render(request,"my_app/search.html")
+    var = request.GET.get("main_search")
+    print(var)
+    dict = Plant.objects.all()
+    print(dict)
+    content = {"dicts":dict}
+    print(content)
+
+    return render(request,"my_app/search.html",content)
 
 def compound_detail(request):
     return render (request,"my_app/compound_deatil.html")

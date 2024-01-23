@@ -18,7 +18,7 @@ class Command(BaseCommand):
                 # Assuming YourModel has fields like 'field1', 'field2', etc.
                 Plant.objects.create(
                     name=row['Plant'],
-                    botanical_name=row['Botanical_name'],
+                    botanical_name=row['Botanical_Name'],
                     family=row["Family"],
                     part_used=row["Part_Used"],
                     active_compound=row["Active_Compounds"],
