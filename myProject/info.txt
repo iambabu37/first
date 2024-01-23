@@ -1,0 +1,106 @@
+hytochemical Information:
+
+    Phytochemical Name
+    Chemical Structure (SMILES, InChI)
+    Molecular Formula
+    Molecular Weight
+    IUPAC Name
+    CAS Registry Number
+
+Plant Source Information:
+
+    Plant Name
+    Botanical Name
+    Family
+    Part of the Plant Used (leaves, roots, seeds, etc.)
+    Geographical Origin
+
+Bioactivity and Pharmacological Information:
+
+    Biological Activity (e.g., antioxidant, anti-inflammatory)
+    Target Proteins or Pathways
+    Mode of Action
+    Pharmacological Effects
+    EC50, IC50, or other relevant concentrations
+
+Disease Association:
+
+    Associated Diseases or Conditions
+    Mechanisms of Action on Disease
+    Clinical Trials Information
+    Disease-specific Effects
+
+Chemical Properties:
+
+    Solubility
+    Stability
+    Absorption, Distribution, Metabolism, Excretion (ADME) properties
+
+Toxicity and Safety:
+
+    Toxicity Data
+    LD50 (Median Lethal Dose)
+    Adverse Effects
+    Safety Considerations
+
+Pharmacokinetics:
+
+    Absorption Rate
+    Distribution
+    Metabolism
+    Elimination
+
+Isolation and Extraction:
+
+    Extraction Methods
+    Isolation Techniques
+    Purity of Extract
+
+Chemical Analysis:
+
+    Analytical Methods Used (e.g., chromatography, spectroscopy)
+    Quantitative and Qualitative Data
+    Reference Standards
+
+Structural Features:
+
+    Functional Groups
+    Chirality
+    Stereochemistry
+
+References and Sources:
+
+    Research Papers
+    Publications
+    Patents
+    URLs for External References
+
+Experimental Data:
+
+    Experimental Conditions
+    Assay Protocols
+    Laboratory Information
+
+Biological Models:
+
+    Cell Lines
+    Animal Models
+    In vitro and In vivo Studies
+
+Custom Fields:
+
+    Depending on your specific research needs, you may include additional custom fields to capture unique data.
+
+Data Versioning and Timestamps:
+
+    Keep track of when data was added or modified for version control.
+
+Storage and Availability:
+
+    Availability of the Phytochemical
+    Storage Conditions
+
+Synthesis and Derivatives:
+
+    Synthetic Pathways
+    Derivatives and Modifications

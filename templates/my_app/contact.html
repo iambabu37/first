@@ -1,0 +1,38 @@
+{% extends "my_app/base.html"%}
+{% block contact %}
+<form action="{% url 'contact'%}" method="post">
+  {% csrf_token %}
+  <div class='container mt-4 pt-5'>
+    <div class="row">
+      <div class="col-8">
+        <div class="mb-3  pt-5 ">
+          <label class="form-check-label" for="exampleCheck1">Name</label>
+          <input type="text" name="name" class="border-black form-control" id="exampleCheck1">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" name="email" class="border-black form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" class="border-black form-control" id="phone" name="phone_no" placeholder="e.g., 123-456-7890"
+            required>
+        </div>
+        <div class="mb-3 ">
+          <label for="exampleCheck1">How can i help you!...</label>
+          <textarea id="message" class="border-black form-control" name="message" rows="4" cols="50"
+            placeholder="Enter your message here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Submit</button>
+      </div>
+      <div class="col-4 bg-primary rounded mt-5">
+        <h1 class=" text-center text-white " style="margin-top: 50%"> Contact </h1>
+        <h1 class=" text-center text-white"> Us </h1>
+      </div>
+    </div>
+  </div>
+  </div>
+</form>
+{% endblock contact %}
