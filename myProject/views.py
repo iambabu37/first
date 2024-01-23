@@ -19,6 +19,5 @@ def search(request):
     return render(request,"my_app/search.html")
 
 def compound_detail(request):
-
     return render (request,"my_app/compound_deatil.html")
 
