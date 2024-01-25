@@ -1,14 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from myapp.models import *
+from myapp.forms import *
 
 def about(request):
     return render(request,"my_app/about.html")
 
 def home(request):
     return render(request,"my_app/home.html")
-    
+
 def contact(request):
-    return render(request,"my_app/contact.html")
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			form.save()  # Save the data to the database
+			return redirect('home')  # Redirect to a success page
+	return render(request, 'my_app/contact.html')
+    
 
 def feed_back(request):
     return render(request,"my_app/feed.html")
