@@ -78,9 +78,9 @@
         <div class="col-lg-6 content order-last  order-lg-first">
           <h3>About Us</h3>
           <p>
-            Dolor iure expedita id fuga asperiores qui sunt consequatur minima. Quidem voluptas deleniti. Sit quia
-            molestiae quia quas qui magnam itaque veritatis dolores. Corrupti totam ut eius incidunt reiciendis
-            veritatis asperiores placeat.
+            PhytoChemDB is a project dedicated to cataloging and exploring the diverse world of phytochemicals
+            foundb in plants. Our mission is to provide a comprehensive and accessible resource for researchers,students,
+            and enthusiasts interested in the chemical compounds that make plants unique.
           </p>
           <ul>
             <li data-aos="fade-up" data-aos-delay="100">
@@ -120,4 +120,20 @@
       searchInput.value = '';
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize AOS with a delay
+    AOS.init({
+      delay: 200, // Set the delay value in milliseconds
+    });
+
+    // Get the search input element
+    var searchInput = document.querySelector('input[name="main_search"]');
+
+    // Clear the value of the search field
+    searchInput.value = '';
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
 {% endblock home %}
