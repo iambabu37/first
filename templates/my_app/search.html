@@ -10,11 +10,12 @@
 		color: #fff;
 		/* Change the text color on hover to white */
 	}
+
 	.scrollable-section {
-            height: 70vh; /* Adjust the height as needed */
-            overflow-y: auto;
-        }
-		
+		height: 70vh;
+		/* Adjust the height as needed */
+		overflow-y: auto;
+	}
 </style>
 
 
@@ -22,7 +23,7 @@
 <div class=" container-fluid mt-5 pt-5">
 	<div class="row">
 		<div class="col-md-2 top-25 end-25">
-			<div class="container clearfix">
+			<div class="container ">
 
 				<ul class="nav nav-pills flex-column  ">
 					<h2 class="h2"> Catogery</h2>
@@ -93,7 +94,7 @@
 
 
 				<div class="row ">
-					<div class="col-12 mt-2"style="max-height: 500px; overflow-y: auto;">
+					<div class="col-12 mt-2" style="max-height: 500px; overflow-y: auto;">
 						{% if dicts %}
 						{% for dict in dicts %}
 						<div class="list-group mt-2 mx-3 border border-black w-70">
@@ -118,6 +119,11 @@
 						</div>
 						{% endif %}
 						{% endif %}
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
 
 						<div class="d-flex justify-content-center pt-5">
 							<nav aria-label="Page navigation example">
@@ -151,19 +157,21 @@
 								</ul>
 							</nav>
 						</div>
-
 					</div>
-
 				</div>
-
-
-
 			</div>
 		</div>
 
+
+
+
 		<div class="col-md-2 top-25 end-0">
 			<h2>i am the index</h2>
-			<P>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab fuga inventore consequuntur voluptatem excepturi molestias obcaecati natus cupiditate ad, deleniti hic vitae eveniet tempora, est deserunt facere impedit, nostrum nobis.</P>
+			<P>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab fuga inventore consequuntur voluptatem
+				excepturi
+				molestias obcaecati natus cupiditate ad, deleniti hic vitae eveniet tempora, est deserunt facere
+				impedit,
+				nostrum nobis.</P>
 		</div>
 
 	</div>

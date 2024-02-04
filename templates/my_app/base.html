@@ -44,14 +44,9 @@
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'search'%}">Search</a></li>
-          <li><a href="{% url 'help' %}">How to use</a></li>
-          <li><a href="{% url 'about' %}py">About</a></li>
-          <li class="dropdown"><a href="#"><span>Tools</span> <i class="dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Deep Drop Down 1</a></li>
-              <li><a href="#">Deep Drop Down 2</a></li>
-            </ul>
+          <li><a href="{% url 'plant' %}">Plants</a></li>
+          <li><a href="#">Advanced search</a></li>
+          <li ><a href="{% url 'help' %}"> How to use </a>  
           <li><a href="{% url 'contact' %}">Contact</a></li>
       </nav><!-- .navbar -->
 
@@ -59,27 +54,35 @@
   </header><!-- End Header -->
   <!-- End Header -->
   <main class="mb-5 pb-5">
-    {%block index%}
 
-    {% endblock index%}
+<!-- block for index page-->
+    {%block index %}
+
+    {% endblock index %}
+
+    <!-- block for home page-->
+
     {% block home %}
 
     {% endblock home %}
-    {% block about %}
+<!-- block for plant page-->
 
-    {%endblock about %}
+    {% block plant %}
+
+    {%endblock %}
+
+<!-- block for contact page-->
 
     {% block contact%}
 
     {% endblock contact%}
 
+<!-- block for help page-->
+    
     {% block help%}
 
     {% endblock%}
 
-    {% block cmd %}
-
-    {% endblock cmd %}
 
   </main>
   <!-- ======= Footer ======= -->

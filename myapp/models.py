@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import EmailValidator,RegexValidator
 import datetime,os
-from django.contrib.postgres.fields import ArrayField
+#from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 def img_plant(request,filename):
@@ -15,116 +15,120 @@ def img_chem(request,filename):
     return os.path.join("upload/chem",new_file)
 
 class Phytochemical(models.Model):
-    name = models.CharField(max_length=255)
-    synonymous_names = models.TextField()
-    external_identifiers = models.TextField()
-    smiles = models.TextField()
-    inchi = models.TextField()
-    inchikey = models.TextField()
-    deepsmiles = models.TextField()
-    functional_groups = models.TextField()
-    classyfire_kingdom = models.CharField(max_length=255)
-    classyfire_superclass = models.CharField(max_length=255)
-    classyfire_class = models.CharField(max_length=255)
-    classyfire_subclass = models.CharField(max_length=255)
-    np_classifier_biosynthetic_pathway = models.TextField()
-    np_classifier_superclass = models.CharField(max_length=255)
-    np_classifier_class = models.CharField(max_length=255)
-    np_likeness_score = models.FloatField()
+    name = models.CharField(max_length=255,null = True,blank=True)
+    synonymous_names = models.TextField(null = True,blank=True)
+    external_identifiers = models.TextField(null = True,blank=True)
+    smiles = models.TextField(null = True,blank=True)
+    inchi = models.TextField(null = True,blank=True)
+    inchikey = models.TextField(null = True,blank=True)
+    deepsmiles = models.TextField(null = True,blank=True)
+    functional_groups = models.TextField(null = True,blank=True)
+    classyfire_kingdom = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_superclass = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_class = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_subclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_biosynthetic_pathway = models.TextField(null = True,blank=True)
+    np_classifier_superclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_class = models.CharField(max_length=255,null = True,blank=True)
+    np_likeness_score = models.FloatField(null = True,blank=True)
     
    
     def __str__(self):
         return self.name
+class Reference(models.Model):
+    reference = models.CharField(max_length=255,null = True,blank=True)
+    title = models.CharField(max_length = 255,null = True, blank= True)
+    def __str__(self):
+        return self.title
     
 class Plant(models.Model):
-    name = models.CharField(max_length=255)
-    botanical_name = models.CharField(max_length = 255)
-    family = models.CharField(max_length = 255)
-    active_compound = models.CharField(max_length=255)
-    related_diseae = models.CharField(max_length = 255)
-    plant_image = models.ImageField(upload_to=img_plant)
-    part_used = models.CharField(max_length = 255)
-    description = models.TextField()
+    name = models.CharField(max_length=255,null = True,blank=True)
+    botanical_name = models.CharField(max_length = 255,null = True,blank=True)
+    family = models.CharField(max_length = 255,null = True,blank=True)
+    active_compound = models.CharField(max_length=255,null = True,blank=True)
+    related_diseae = models.CharField(max_length = 255,null = True,blank=True)
+    plant_image = models.ImageField(upload_to=img_plant,null = True,blank=True)
+    description = models.TextField(null = True,blank=True)
     time_of_add_plant = models.DateTimeField(auto_now_add= True)
-    reference_detail = ArrayField(base_field=models.CharField(max_length=255), blank=True, default=list, null=True, size=None)
+    referenceplant = models.ManyToManyField( Reference)
 
     def __str__(self):
         return self.name
 
-class DruglikenessProperties(models.Model):
+class DkProp(models.Model):
     phytochemical = models.OneToOneField(Phytochemical, on_delete=models.CASCADE)
-    lipinski_violations = models.IntegerField()
-    lipinski_rule = models.IntegerField()
-    ghose_violations = models.IntegerField()
-    veber_rule = models.CharField()
-    ghose_rule = models.CharField()
-    gsk_4_400_rule = models.BooleanField()
-    pfizer_3_75_rule = models.BooleanField()
-    qedw_score = models.FloatField()
+    lipinski_violations = models.IntegerField(null = True,blank=True)
+    lipinski_rule = models.IntegerField(null = True,blank=True)
+    ghose_violations = models.IntegerField(null = True,blank=True)
+    veber_rule = models.CharField(max_length=255,null = True,blank=True)
+    ghose_rule = models.CharField(max_length=255,null = True,blank=True)
+    gsk_4_400_rule = models.BooleanField(null = True,blank=True)
+    pfizer_3_75_rule = models.BooleanField(null = True,blank=True)
+    qedw_score = models.FloatField(null = True,blank=True)
 
     def __str__(self):
         return " DrukLikeness "
 
 class Contact(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50,null = True,blank=True)
     email = models.CharField(max_length=254, validators=[EmailValidator(message='Enter a valid email address.')])
     phone_no = models.CharField(max_length=15, validators=[RegexValidator(r'^\+?1?\d{9,15}$', message='Enter a valid phone number.')])
-    message = models.TextField()
+    message = models.TextField(null = True,blank=True)
     time_of_submit = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
-class MolecularProperties(models.Model):
-    molecular_weight = models.FloatField()
-    log_p = models.FloatField()
-    topological_polar_surface_area = models.FloatField()
-    num_hydrogen_bond_acceptors = models.IntegerField()
-    num_hydrogen_bond_donors = models.IntegerField()
-    num_carbon_atoms = models.IntegerField()
-    num_heavy_atoms = models.IntegerField()
-    num_heteroatoms = models.IntegerField()
-    num_nitrogen_atoms = models.IntegerField()
-    num_sulfur_atoms = models.IntegerField()
-    num_chiral_carbon_atoms = models.IntegerField()
-    stereochemical_complexity = models.FloatField()
-    num_sp_hybridized_carbon_atoms = models.IntegerField()
-    num_sp2_hybridized_carbon_atoms = models.IntegerField()
-    num_sp3_hybridized_carbon_atoms = models.IntegerField()
-    shape_complexity = models.FloatField()
-    num_rotatable_bonds = models.IntegerField()
-    num_aliphatic_carbocycles = models.IntegerField()
-    num_aliphatic_heterocycles = models.IntegerField()
-    num_aliphatic_rings = models.IntegerField()
-    num_aromatic_carbocycles = models.IntegerField()
-    num_aromatic_heterocycles = models.IntegerField()
-    num_aromatic_rings = models.IntegerField()
-    total_num_rings = models.IntegerField()
-    num_saturated_carbocycles = models.IntegerField()
-    num_saturated_heterocycles = models.IntegerField()
-    num_saturated_rings = models.IntegerField()
-    num_sssr = models.IntegerField()
+class McProp(models.Model):
+    molecular_weight = models.FloatField(null = True,blank=True)
+    log_p = models.FloatField(null = True,blank=True)
+    topological_polar_surface_area = models.FloatField(null = True,blank=True)
+    num_hydrogen_bond_acceptors = models.IntegerField(null = True,blank=True)
+    num_hydrogen_bond_donors = models.IntegerField(null = True,blank=True)
+    num_carbon_atoms = models.IntegerField(null = True,blank=True)
+    num_heavy_atoms = models.IntegerField(null = True,blank=True)
+    num_heteroatoms = models.IntegerField(null = True,blank=True)
+    num_nitrogen_atoms = models.IntegerField(null = True,blank=True)
+    num_sulfur_atoms = models.IntegerField(null = True,blank=True)
+    num_chiral_carbon_atoms = models.IntegerField(null = True,blank=True)
+    stereochemical_complexity = models.FloatField(null = True,blank=True)
+    num_sp_hybridized_carbon_atoms = models.IntegerField(null = True,blank=True)
+    num_sp2_hybridized_carbon_atoms = models.IntegerField(null = True,blank=True)
+    num_sp3_hybridized_carbon_atoms = models.IntegerField(null = True,blank=True)
+    shape_complexity = models.FloatField(null = True,blank=True)
+    num_rotatable_bonds = models.IntegerField(null = True,blank=True)
+    num_aliphatic_carbocycles = models.IntegerField(null = True,blank=True)
+    num_aliphatic_heterocycles = models.IntegerField(null = True,blank=True)
+    num_aliphatic_rings = models.IntegerField(null = True,blank=True)
+    num_aromatic_carbocycles = models.IntegerField(null = True,blank=True)
+    num_aromatic_heterocycles = models.IntegerField(null = True,blank=True)
+    num_aromatic_rings = models.IntegerField(null = True,blank=True)
+    total_num_rings = models.IntegerField(null = True,blank=True)
+    num_saturated_carbocycles = models.IntegerField(null = True,blank=True)
+    num_saturated_heterocycles = models.IntegerField(null = True,blank=True)
+    num_saturated_rings = models.IntegerField(null = True,blank=True)
+    num_sssr = models.IntegerField(null = True,blank=True)
 
     def __str__(self):
         return f"Molecular Properties for compound ID: {self.id}"
 
-from django.db import models
 
-class ADMEProperties(models.Model):
-    bioavailability_score = models.FloatField()
-    solubility_class_esol = models.CharField(max_length=255)
-    solubility_class_silicos_it = models.CharField(max_length=255)
-    blood_brain_barrier_permeation = models.BooleanField()
-    gastrointestinal_absorption = models.BooleanField()
-    log_kp_skin_permeation = models.FloatField()
-    num_pains_structural_alerts = models.IntegerField()
-    num_brenk_structural_alerts = models.IntegerField()
-    cyp1a2_inhibitor = models.BooleanField()
-    cyp2c19_inhibitor = models.BooleanField()
-    cyp2c9_inhibitor = models.BooleanField()
-    cyp2d6_inhibitor = models.BooleanField()
-    cyp3a4_inhibitor = models.BooleanField()
-    p_glycoprotein_substrate = models.BooleanField()
+
+class ADMEProp(models.Model):
+    bioavailability_score = models.FloatField(null = True,blank=True)
+    solubility_class_esol = models.CharField(max_length=255,null = True,blank=True)
+    solubility_class_silicos_it = models.CharField(max_length=255,null = True,blank=True)
+    blood_brain_barrier_permeation = models.BooleanField(null = True,blank=True)
+    gastrointestinal_absorption = models.BooleanField(null = True,blank=True)
+    log_kp_skin_permeation = models.FloatField(null = True,blank=True)
+    num_pains_structural_alerts = models.IntegerField(null = True,blank=True)
+    num_brenk_structural_alerts = models.IntegerField(null = True,blank=True)
+    cyp1a2_inhibitor = models.BooleanField(null = True,blank=True)
+    cyp2c19_inhibitor = models.BooleanField(null = True,blank=True)
+    cyp2c9_inhibitor = models.BooleanField(null = True,blank=True)
+    cyp2d6_inhibitor = models.BooleanField(null = True,blank=True)
+    cyp3a4_inhibitor = models.BooleanField(null = True,blank=True)
+    p_glycoprotein_substrate = models.BooleanField(null = True,blank=True)
 
     def __str__(self):
         return f"ADME Properties for compound ID: {self.id}"

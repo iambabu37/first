@@ -7,25 +7,27 @@
     <h1 class="mb-4">Phytochemical Compound Details</h1>
 
     <div class="row">
+        {% for dict in dicts %}
         <div class="col-md-6">
             <!-- Compound Image -->
-            <img src="compound_image.jpg" alt="Compound Image" class="compound-image mb-3">
+            <img  style = "width:300px;" src = "{{dict.plant_image.url}}" alt="Compound Image" class="compound-image mb-3">
         </div>
         <div class="col-md-6">
             <!-- Compound Information -->
             <h2>Compound Name</h2>
-            <p class="lead">Source Plant: Plant Name</p>
+            <p class="lead">Source Plant: {{dict.name}}</p>
             <p>Family: Plant Family</p>
             <p>Part Used: Plant Part</p>
             <p>Isolated From: Isolation Source</p>
             <p>Chemical Class: Classification</p>
         </div>
     </div>
+    {% endfor%}
 
     <!-- Chemical Structure Section -->
     <div class="mt-4">
         <h2>Chemical Structure</h2>
-        <img src="chemical_structure.png" alt="Chemical Structure" class="compound-image">
+        <img src="{{dicts.plant_image.url}}" alt="Chemical Structure" class="compound-image">
     </div>
 
     <!-- Biological Activity Section -->

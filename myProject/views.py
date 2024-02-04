@@ -20,19 +20,23 @@ def contact(request):
 	return render(request, 'my_app/contact.html')
     
 
-def feed_back(request):
-    return render(request,"my_app/feed.html")
+def plant(request):
+    return render(request,"my_app/plant.html")
 
 def help(request):
     return render(request,"my_app/help.html")
 
+
+
+
+# function for search 
 def search(request):
     
-    # var = request.GET.get("main_search") if request.GET.get is not None else " "
-    # print(var)
-    # if not var or var.isspace():
-    #     messages.error(request, 'Please enter a valid search term.')
-    #     return render(request, "my_app/search.html")
+    var = request.GET.get("main_search") if request.GET.get is not None else " "
+    print(var)
+    if not var or var.isspace():
+        messages.error(request, 'Please enter a valid search term.')
+        return render(request, "my_app/search.html")
     dict = Plant.objects.all().order_by("name")
     # dict = Plant.objects.filter(
     #      Q(name__icontains = var) &
@@ -61,9 +65,14 @@ def search(request):
 
     # return render(request,"my_app/search.html",content)
 
+
+#function for compound details
+
 def compound_detail(request,name):
     
     dict = Plant.objects.filter(name=name)
-    content ={"dict":dict}
+    
+    content ={"dicts":dict}
+    print(content)    
     return render (request,"my_app/compound_detail.html",content)
 
