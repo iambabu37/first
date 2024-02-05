@@ -14,60 +14,16 @@ def img_chem(request,filename):
     new_file = "%s%s"%(now_time,filename)
     return os.path.join("upload/chem",new_file)
 
-class Phytochemical(models.Model):
-    name = models.CharField(max_length=255,null = True,blank=True)
-    synonymous_names = models.TextField(null = True,blank=True)
-    external_identifiers = models.TextField(null = True,blank=True)
-    smiles = models.TextField(null = True,blank=True)
-    inchi = models.TextField(null = True,blank=True)
-    inchikey = models.TextField(null = True,blank=True)
-    deepsmiles = models.TextField(null = True,blank=True)
-    functional_groups = models.TextField(null = True,blank=True)
-    classyfire_kingdom = models.CharField(max_length=255,null = True,blank=True)
-    classyfire_superclass = models.CharField(max_length=255,null = True,blank=True)
-    classyfire_class = models.CharField(max_length=255,null = True,blank=True)
-    classyfire_subclass = models.CharField(max_length=255,null = True,blank=True)
-    np_classifier_biosynthetic_pathway = models.TextField(null = True,blank=True)
-    np_classifier_superclass = models.CharField(max_length=255,null = True,blank=True)
-    np_classifier_class = models.CharField(max_length=255,null = True,blank=True)
-    np_likeness_score = models.FloatField(null = True,blank=True)
-    
-   
-    def __str__(self):
-        return self.name
+
 class Reference(models.Model):
     reference = models.CharField(max_length=255,null = True,blank=True)
     title = models.CharField(max_length = 255,null = True, blank= True)
     def __str__(self):
         return self.title
     
-class Plant(models.Model):
-    name = models.CharField(max_length=255,null = True,blank=True)
-    botanical_name = models.CharField(max_length = 255,null = True,blank=True)
-    family = models.CharField(max_length = 255,null = True,blank=True)
-    active_compound = models.CharField(max_length=255,null = True,blank=True)
-    related_diseae = models.CharField(max_length = 255,null = True,blank=True)
-    plant_image = models.ImageField(upload_to=img_plant,null = True,blank=True)
-    description = models.TextField(null = True,blank=True)
-    time_of_add_plant = models.DateTimeField(auto_now_add= True)
-    referenceplant = models.ManyToManyField( Reference)
 
-    def __str__(self):
-        return self.name
 
-class DkProp(models.Model):
-    phytochemical = models.OneToOneField(Phytochemical, on_delete=models.CASCADE)
-    lipinski_violations = models.IntegerField(null = True,blank=True)
-    lipinski_rule = models.IntegerField(null = True,blank=True)
-    ghose_violations = models.IntegerField(null = True,blank=True)
-    veber_rule = models.CharField(max_length=255,null = True,blank=True)
-    ghose_rule = models.CharField(max_length=255,null = True,blank=True)
-    gsk_4_400_rule = models.BooleanField(null = True,blank=True)
-    pfizer_3_75_rule = models.BooleanField(null = True,blank=True)
-    qedw_score = models.FloatField(null = True,blank=True)
 
-    def __str__(self):
-        return " DrukLikeness "
 
 class Contact(models.Model):
     name = models.CharField(max_length=50,null = True,blank=True)
@@ -132,3 +88,57 @@ class ADMEProp(models.Model):
 
     def __str__(self):
         return f"ADME Properties for compound ID: {self.id}"
+        
+class DkProp(models.Model):
+    lipinski_violations = models.IntegerField(null = True,blank=True)
+    lipinski_rule = models.IntegerField(null = True,blank=True)
+    ghose_violations = models.IntegerField(null = True,blank=True)
+    veber_rule = models.CharField(max_length=255,null = True,blank=True)
+    ghose_rule = models.CharField(max_length=255,null = True,blank=True)
+    gsk_4_400_rule = models.BooleanField(null = True,blank=True)
+    pfizer_3_75_rule = models.BooleanField(null = True,blank=True)
+    qedw_score = models.FloatField(null = True,blank=True)
+
+    def __str__(self):
+        return " DrukLikeness "
+
+    
+class Phytochemical(models.Model):
+    name = models.CharField(max_length=255,null = True,blank=True)
+    synonymous_names = models.TextField(null = True,blank=True)
+    external_identifiers = models.TextField(null = True,blank=True)
+    smiles = models.TextField(null = True,blank=True)
+    inchi = models.TextField(null = True,blank=True)
+    inchikey = models.TextField(null = True,blank=True)
+    deepsmiles = models.TextField(null = True,blank=True)
+    functional_groups = models.TextField(null = True,blank=True)
+    classyfire_kingdom = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_superclass = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_class = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_subclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_biosynthetic_pathway = models.TextField(null = True,blank=True)
+    np_classifier_superclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_class = models.CharField(max_length=255,null = True,blank=True)
+    np_likeness_score = models.FloatField(null = True,blank=True)
+    mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE )
+    dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE)
+    admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE)
+
+
+    
+class Plant(models.Model):
+    name = models.CharField(max_length=255,null = True,blank=True)
+    botanical_name = models.CharField(max_length = 255,null = True,blank=True)
+    family = models.CharField(max_length = 255,null = True,blank=True)
+    synonyms = models.CharField(max_length=255,null= True,blank=True)
+    active_compound = models.CharField(max_length=255,null = True,blank=True)
+    related_plant = models.CharField(max_length = 255,null = True,blank=True)
+    related_diseae = models.CharField(max_length = 255,null = True,blank=True)
+    plant_image = models.ImageField(upload_to=img_plant,null = True,blank=True)
+    description = models.TextField(null = True,blank=True)
+    time_of_add_plant = models.DateTimeField(auto_now_add= True)
+    phytochemical_value = models.ManyToManyField(Phytochemical)
+    referenceplant = models.ManyToManyField( Reference)
+
+    def __str__(self):
+        return self.name

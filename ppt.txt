@@ -4,3 +4,24 @@ title
 3. methodology
 
 
+class Phytochemical(models.Model):
+    name = models.CharField(max_length=255,null = True,blank=True)
+    synonymous_names = models.TextField(null = True,blank=True)
+    external_identifiers = models.TextField(null = True,blank=True)
+    smiles = models.TextField(null = True,blank=True)
+    inchi = models.TextField(null = True,blank=True)
+    inchikey = models.TextField(null = True,blank=True)
+    deepsmiles = models.TextField(null = True,blank=True)
+    functional_groups = models.TextField(null = True,blank=True)
+    classyfire_kingdom = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_superclass = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_class = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_subclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_biosynthetic_pathway = models.TextField(null = True,blank=True)
+    np_classifier_superclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_class = models.CharField(max_length=255,null = True,blank=True)
+    np_likeness_score = models.FloatField(null = True,blank=True)
+    mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE)
+    dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE)
+    admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE)
+    
