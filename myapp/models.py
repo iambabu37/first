@@ -123,6 +123,10 @@ class Phytochemical(models.Model):
     mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE )
     dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE)
     admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE)
+    reference_paper = models.ManyToManyField( Reference)
+
+    def __str__(self):
+        return self.name
 
 
     
