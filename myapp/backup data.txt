@@ -8,3 +8,5 @@ name = models.CharField(max_length=255)
     plant_source = models.ForeignKey("plant",on_delete=models.CASCADE,related_name = "phyto")
     description_compound = models.TextField()
     time_of_add = models.DateTimeField(auto_now_add= True)
+
+

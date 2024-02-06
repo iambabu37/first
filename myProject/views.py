@@ -21,12 +21,20 @@ def contact(request):
     
 
 def plant(request):
-    return render(request,"my_app/plant.html")
+    obj = Plant.objects.all()
+    content = {"dicts":obj}
+    return render(request,"my_app/plant.html",content)
 
 def help(request):
     return render(request,"my_app/help.html")
 
-
+def plantviews(request,name):
+   
+    obj = Plant.objects.filter(name=name)
+    content = {'dicts':obj}
+    print(content)
+     
+    return render(request,"my_app/plantdetail.html",content)
 
 
 # function for search 

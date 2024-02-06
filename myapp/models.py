@@ -141,8 +141,8 @@ class Plant(models.Model):
     plant_image = models.ImageField(upload_to=img_plant,null = True,blank=True)
     description = models.TextField(null = True,blank=True)
     time_of_add_plant = models.DateTimeField(auto_now_add= True)
-    phytochemical_value = models.ManyToManyField(Phytochemical)
-    referenceplant = models.ManyToManyField( Reference)
+    phytochemical_value = models.ManyToManyField(Phytochemical ,null= True,blank = True)
+    referenceplant = models.ManyToManyField( Reference,null =True, blank = True)
 
     def __str__(self):
         return self.name

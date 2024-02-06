@@ -28,6 +28,7 @@ urlpatterns = [
     path("help/",views.help,name="help"),
     path("search/",views.search,name="search"),
     path("detail/<str:name>/",views.compound_detail, name = "detail"),
+    path('plant/plantdetail/<str:name>/',views.plantviews, name = 'plantdetail'),
 
 
 ] 
