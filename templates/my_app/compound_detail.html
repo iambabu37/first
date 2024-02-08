@@ -2,67 +2,90 @@
 {% load static %}
 
 {% block cmd %}
+<style>
+     #fixed-column {
+        position: sticky;
+        top: 100px;
+
+    }
+</style>
 
 <div class="container mt-5 pt-5">
     <h1 class="mb-4">Phytochemical Compound Details</h1>
 
-    <div class="row">
-        {% for dict in dicts %}
-        <div class="col-md-6">
-            <!-- Compound Image -->
-            <img  style = "width:300px;" src = "{{dict.plant_image.url}}" alt="Compound Image" class="compound-image mb-3">
+    <div class="row main-content">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Compound Image -->
+                    <img style="width:300px;" src="{{dict.plant_image.url}}" alt="Compound Image"
+                        class="compound-image mb-3">
+                </div>
+                <div class="col-md-6">
+                    <!-- Compound Information -->
+                    <h2>Compound Name</h2>
+                    <p class="lead">Source Plant: {{dict.name}}</p>
+                    <p>Family: Plant Family</p>
+                    <p>Part Used: Plant Part</p>
+                    <p>Isolated From: Isolation Source</p>
+                    <p>Chemical Class: Classification</p>
+                </div>
+            </div>
+
+            <!-- Chemical Structure Section -->
+            <div class="mt-4">
+                <h2>Chemical Structure</h2>
+                <img src="{{dicts.plant_image.url}}" alt="Chemical Structure" class="compound-image">
+            </div>
+
+            <!-- Biological Activity Section -->
+            <div class="mt-4">
+                <h2>Biological Activity</h2>
+                <p>Overview of biological activity and potential therapeutic effects of the compound.</p>
+            </div>
+
+            <!-- Mechanism of Action Section -->
+            <div class="mt-4">
+                <h2>Mechanism of Action</h2>
+                <p>Description of how the compound exerts its effects at the molecular level.</p>
+            </div>
+
+            <!-- Research Findings Section -->
+            <div class="mt-4">
+                <h2>Research Findings</h2>
+                <ul>
+                    <li>Author, et al. (Year). Title of the Research Paper. <i>Journal Name</i>, Volume(Issue), Page
+                        Range.
+                    </li>
+                    <!-- Add more references as needed -->
+                </ul>
+            </div>
+
+            <!-- References Section -->
+            <div class="mt-4 ">
+                <h2>References</h2>
+                <ul>
+                    <li>Author, et al. (Year). Title of the Research Paper. <i>Journal Name</i>, Volume(Issue), Page
+                        Range.
+                    </li>
+                    <!-- Add more references as needed -->
+                </ul>
+            </div>
+
         </div>
-        <div class="col-md-6">
-            <!-- Compound Information -->
-            <h2>Compound Name</h2>
-            <p class="lead">Source Plant: {{dict.name}}</p>
-            <p>Family: Plant Family</p>
-            <p>Part Used: Plant Part</p>
-            <p>Isolated From: Isolation Source</p>
-            <p>Chemical Class: Classification</p>
+        <div class="col-md-3 top-0 end-0 " id="fixed-column">
+            <div class="p text-end" id = "fixed-column" >This is text
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae excepturi nobis provident, mollitia ex
+     
+            </div>
         </div>
     </div>
-    {% endfor%}
-
-    <!-- Chemical Structure Section -->
-    <div class="mt-4">
-        <h2>Chemical Structure</h2>
-        <img src="{{dicts.plant_image.url}}" alt="Chemical Structure" class="compound-image">
-    </div>
-
-    <!-- Biological Activity Section -->
-    <div class="mt-4">
-        <h2>Biological Activity</h2>
-        <p>Overview of biological activity and potential therapeutic effects of the compound.</p>
-    </div>
-
-    <!-- Mechanism of Action Section -->
-    <div class="mt-4">
-        <h2>Mechanism of Action</h2>
-        <p>Description of how the compound exerts its effects at the molecular level.</p>
-    </div>
-
-    <!-- Research Findings Section -->
-    <div class="mt-4">
-        <h2>Research Findings</h2>
-        <ul>
-            <li>Author, et al. (Year). Title of the Research Paper. <i>Journal Name</i>, Volume(Issue), Page Range.</li>
-            <!-- Add more references as needed -->
-        </ul>
-    </div>
-
-    <!-- References Section -->
-    <div class="mt-4">
-        <h2>References</h2>
-        <ul>
-            <li>Author, et al. (Year). Title of the Research Paper. <i>Journal Name</i>, Volume(Issue), Page Range.</li>
-            <!-- Add more references as needed -->
-        </ul>
-    </div>
-
+    
 </div>
 
 <!-- Bootstrap JS and Popper.js (for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+</script>
 {% endblock cmd %}

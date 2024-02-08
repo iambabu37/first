@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.db.models import Q
 from myapp.models import *
 from myapp.forms import *
@@ -30,8 +30,9 @@ def help(request):
 
 def plantviews(request,name):
    
-    obj = Plant.objects.filter(name=name)
-    content = {'dicts':obj}
+    obj = get_object_or_404(Plant, name=name)
+    plantobj = obj.phytochemical_value.all() if obj else None
+    content = {'dicts':obj,"dict2":plantobj}
     print(content)
      
     return render(request,"my_app/plantdetail.html",content)
@@ -45,11 +46,11 @@ def search(request):
     if not var or var.isspace():
         messages.error(request, 'Please enter a valid search term.')
         return render(request, "my_app/search.html")
-    dict = Plant.objects.all().order_by("name")
-    # dict = Plant.objects.filter(
-    #      Q(name__icontains = var) &
-    #      Q(name__istartswith =var) 
-    #  )
+    # dict = Plant.objects.all().order_by("name")
+    dict = Plant.objects.filter(
+         Q(name__icontains = var) &
+         Q(name__istartswith =var) 
+     )
     print(dict)
     if not dict:
         messages.info(request, 'No results found.')
@@ -82,5 +83,12 @@ def compound_detail(request,name):
     
     content ={"dicts":dict}
     print(content)    
-    return render (request,"my_app/compound_detail.html",content)
+    return render (request,"my_app/compound_detail.html")
 
+def plant_compound_detail(request,name):
+    
+    # dict = Plant.objects.filter(name=name)
+    
+    # content ={"dicts":dict}
+    # print(content)    
+    return render (request,"my_app/compound_detail.html")

@@ -100,7 +100,7 @@ class DkProp(models.Model):
     qedw_score = models.FloatField(null = True,blank=True)
 
     def __str__(self):
-        return " DrukLikeness "
+        return f" DrukLikeness{self.id} "
 
     
 class Phytochemical(models.Model):
@@ -108,6 +108,8 @@ class Phytochemical(models.Model):
     synonymous_names = models.TextField(null = True,blank=True)
     external_identifiers = models.TextField(null = True,blank=True)
     smiles = models.TextField(null = True,blank=True)
+    pubchem_id = models.IntegerField(null =True,blank=True)
+    chem_image = models.ImageField(upload_to=img_chem,null = True,blank=True)
     inchi = models.TextField(null = True,blank=True)
     inchikey = models.TextField(null = True,blank=True)
     deepsmiles = models.TextField(null = True,blank=True)
@@ -120,10 +122,10 @@ class Phytochemical(models.Model):
     np_classifier_superclass = models.CharField(max_length=255,null = True,blank=True)
     np_classifier_class = models.CharField(max_length=255,null = True,blank=True)
     np_likeness_score = models.FloatField(null = True,blank=True)
-    mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE )
-    dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE)
-    admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE)
-    reference_paper = models.ManyToManyField( Reference)
+    mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE ,blank =True,null=True )
+    dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE,blank=True,null=True)
+    admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE,blank=True,null =True)
+    reference_paper = models.ManyToManyField( Reference,blank=True)
 
     def __str__(self):
         return self.name
@@ -141,8 +143,8 @@ class Plant(models.Model):
     plant_image = models.ImageField(upload_to=img_plant,null = True,blank=True)
     description = models.TextField(null = True,blank=True)
     time_of_add_plant = models.DateTimeField(auto_now_add= True)
-    phytochemical_value = models.ManyToManyField(Phytochemical ,null= True,blank = True)
-    referenceplant = models.ManyToManyField( Reference,null =True, blank = True)
+    phytochemical_value = models.ManyToManyField(Phytochemical ,blank = True)
+    referenceplant = models.ManyToManyField( Reference, blank = True)
 
     def __str__(self):
         return self.name
