@@ -31,8 +31,11 @@ def help(request):
 def plantviews(request,name):
    
     obj = get_object_or_404(Plant, name=name)
+   
     plantobj = obj.phytochemical_value.all() if obj else None
-    content = {'dicts':obj,"dict2":plantobj}
+    # obj2 = plantobj.reference_paper.all() if obj else None
+    content = {'dicts':obj,
+               "dict2":plantobj}
     print(content)
      
     return render(request,"my_app/plantdetail.html",content)
@@ -47,7 +50,7 @@ def search(request):
         messages.error(request, 'Please enter a valid search term.')
         return render(request, "my_app/search.html")
     # dict = Plant.objects.all().order_by("name")
-    dict = Plant.objects.filter(
+    dict = Phytochemical.objects.filter(
          Q(name__icontains = var) &
          Q(name__istartswith =var) 
      )
