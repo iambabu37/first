@@ -4,6 +4,9 @@ from myapp.models import *
 from myapp.forms import *
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse, FileResponse
+import requests
+from tempfile import NamedTemporaryFile
 
 def about(request):
     return render(request,"my_app/about.html")
@@ -82,16 +85,47 @@ def search(request):
 
 def compound_detail(request,name):
     
-    dict = Plant.objects.filter(name=name)
+    dict = Phytochemical.objects.filter(name=name)
     
     content ={"dicts":dict}
     print(content)    
-    return render (request,"my_app/compound_detail.html")
+    return render (request,"my_app/compound_detail.html",content)
 
 def plant_compound_detail(request,name):
     
-    # dict = Plant.objects.filter(name=name)
+    dicts = Phytochemical.objects.filter(name=name)
     
-    # content ={"dicts":dict}
-    # print(content)    
-    return render (request,"my_app/compound_detail.html")
+    content ={"dicts":dicts}
+    print(content)    
+    return render (request,"my_app/compound_detail.html",content)
+
+def download_sdf(request, name):
+    # PubChem URL for the compound with the given name
+    print(f"{name}")
+    pubchem_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/2244/record/SDF/"
+
+    # Fetch SDF content from PubChem
+    response = requests.get(pubchem_url)
+
+    if response.status_code == 200:
+        sdf_content = response.content
+
+        # Create a temporary file and write the SDF content
+        with NamedTemporaryFile(delete=False, suffix='.sdf') as tmp_file:
+            tmp_file.write(sdf_content)
+            tmp_file_path = tmp_file.name
+
+        # Set the response content type to force a download
+        response = HttpResponse(content_type='application/octet-stream')
+        response['Content-Disposition'] = f'attachment; filename="{name}.sdf"'
+
+        # Write the file content to the response
+        with open(tmp_file_path, 'rb') as file:
+            response.write(file.read())
+
+        # Delete the temporary file
+        os.remove(tmp_file_path)
+
+        return response
+
+    return HttpResponse(f"Error fetching SDF content for compound name {name} from PubChem")

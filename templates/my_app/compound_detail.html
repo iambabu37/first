@@ -59,7 +59,7 @@
                 <!-- Biological Activity Section -->
                 <div class="mt-4">
                     <h2>Molecular property</h2>
-                    <table class="table table-primary table-hover">
+                    <table class="table table-primary ">
                         <thead>
                           <tr>
                             <th scope="col">S.NO</th>
@@ -112,7 +112,7 @@
 
             <section id="adme-prop">
                 <h2>ADME properties</h2>
-                <div class="mt-4"><table class="table table-primary table-hover">
+                <div class="mt-4"><table class="table table-primary ">
                     <thead>
                       <tr>
                         <th scope="col">S.NO</th>
@@ -167,7 +167,7 @@
                 <div class="mt-4">
                     <h2>Druglikliness</h2>
                     <div class="mt-4">
-                    <table class="table table-primary table-hover">
+                    <table class="table table-primary ">
                         <thead>
                           <tr>
                             <th scope="col">S.NO</th>
@@ -221,7 +221,7 @@
             <section id="external-link">
                 <div class="mt-4" id="externallink">
                     <h2>External links</h2>
-                    <table class="table table-primary table-hover">
+                    <table class="table table-primary ">
                         <thead>
                           <tr>
                             <th scope="col">S.NO</th>
@@ -285,14 +285,15 @@
 
         </div>
         <div class="col-md-3 top-0 end-0" id="fixed-column">
-
+            {% for dict in dicts%}
             <div class="p text-end" id="fixed-column">
                 <div class="btn btn-primary top-0 ">
-                    <a href="#" style="color:white">
+                    <a href="{% url 'download_sdf' name=dict.name %}" style="color:white">
                         DOWNLOAD (<span class="fs-5"> sdf</span>)
                     </a>
                 </div>
-                <div class="d-flex justify-content-center mt-3">
+            {% endfor%}
+                <div class="d-flex  mt-3">
                     <h2 class="mt-2 fw-medium ">Content</h2>
                 </div>
                 <div class="list-group mt-2 d-flex " style="border: 1px;">

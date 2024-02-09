@@ -3,6 +3,11 @@
 
 {% block plantdetail %}
 
+<style>
+    table thead tr th{
+        background-color: rgb(0, 110, 255) !important ;
+        color:white !important;}
+ </style>
 <div class="container pt-5 mt-5">
     <div class="row">
         <div class="col-md-6 lh-lg">
@@ -41,7 +46,7 @@
             
             <tr>
                 <td style = "width:150px">{{dicts.name}}</td>
-                <td style = "width:150px"><a  style="color:rgb(0, 106, 155);" href="{% url 'compounddetail' dict1.id %}">{{dict1.name}}</a></td>
+                <td style = "width:150px"><a  style="color:rgb(0, 106, 155);" href="{% url 'compounddetail' dict1.name %}">{{dict1.name}}</a></td>
                 
                 <td style = "width:400px">
                 
