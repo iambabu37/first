@@ -106,7 +106,7 @@ class DkProp(models.Model):
 class Phytochemical(models.Model):
     name = models.CharField(max_length=255,null = True,blank=True)
     synonymous_names = models.TextField(null = True,blank=True)
-    external_identifiers = models.TextField(null = True,blank=True)
+    molecular_formula = models.TextField(null = True,blank=True)
     smiles = models.TextField(null = True,blank=True)
     pubchem_id = models.IntegerField(null =True,blank=True)
     chem_image = models.ImageField(upload_to=img_chem,null = True,blank=True)
@@ -137,7 +137,7 @@ class Plant(models.Model):
     botanical_name = models.CharField(max_length = 255,null = True,blank=True)
     family = models.CharField(max_length = 255,null = True,blank=True)
     synonyms = models.CharField(max_length=255,null= True,blank=True)
-    active_compound = models.CharField(max_length=255,null = True,blank=True)
+    groups = models.CharField(max_length=255,null = True,blank=True)
     related_plant = models.CharField(max_length = 255,null = True,blank=True)
     related_diseae = models.CharField(max_length = 255,null = True,blank=True)
     plant_image = models.ImageField(upload_to=img_plant,null = True,blank=True)

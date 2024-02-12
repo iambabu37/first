@@ -13,6 +13,11 @@
         top: 100px;
 
     }
+    .forlink:hover{
+      color : rgb(0, 110, 255) !important;
+      font-weight: 700 !important;
+      transition: 0.50ms;
+    }
 
     .list-group .list-group-item{
         border-radius: 12px;
@@ -26,39 +31,69 @@
     a {
         text-decoration: none;
     }
+    tr td:nth-child(2) {
+    font-weight: 700 ;
+}
+section{
+  padding-top:80px !important;
+  padding-bottom: 20px !important;
+}
+
+
 </style>
 
 <div class="container mt-5 pt-5">
     <div class="row main-content">
         <div class="col-md-9 pt-4">
-            <h1 class="mb-4">Compound Name</h1>
+            <h1 class="mb-4">{{dicts.name}}</h1>
             <div class="row">
                 <div class="col-md-6">
+                  {% if dicts.chem_image %}
                     <!-- Compound Image -->
-                    <img style="width:300px;" src="{{dict.plant_image.url}}" alt="Compound Image"
+                    <img style="width:300px;" src="{{dicts.chem_image.url}}" alt="Compound Image"
                         class="compound-image mb-3">
+                  {% endif %}
                 </div>
-                <div class="col-md-6" id="summary">
+                <div class="col-md-6 mt-2" id="summary">
                     <!-- Compound Information -->
-                    <p class="lead">Source Plant: {{dict.name}}</p>
-                    <p>Family: Plant Family</p>
-                    <p>Part Used: Plant Part</p>
-                    <p>Isolated From: Isolation Source</p>
-                    <p>Chemical Class: Classification</p>
+                    <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
+                    <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.molecular_formula }}</p>
+                    <p class="fs-5"> <strong>IUPAC Name  :</strong>   {{dicts.IUPAC}}</p> 
+                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.IUPAC}}</p> 
                 </div>
             </div>
 
             <!-- Chemical Structure Section -->
             <section id="summary">
-                <div class="mt-4">
+                <div class="" >
                     <h2>Title and summary</h2>
-                    <img src="{{dicts.plant_image.url}}" alt="Chemical Structure" class="compound-image">
+                    <hr>
+                   <h3>Summary</h3>
+                   <hr>
+                    <div class="summary-first" style="padding:5px 5px;">
+                    <p class="mt-2 fw-1"> <strong>IUPAC Name  :</strong>   {{dicts.name}}</p> 
+                    <P class="mt-2 fw-5"><strong>Synonymous Name :</strong> {{dict.synonymous_names}}</p> 
+                    <p class="mt-2 fw-5"><strong>Molecular Formula : </strong></p> 
+                      <p class="mt-2 fw-5"> <strong>Pubchem Id  : </strong>{{dicts.pubchem_id}} </p>
+                    </div>
+              </div>
+              <div class="mt-4" >
+              
+               <h3>Chemical Information</h3>
+               <hr>
+                <div class="summary-first" style="padding:5px 5px;">
+                <p class="mt-2 fw-1"> <strong>InChI :</strong> <br> <p >{{dicts.inchi}}</p></p> 
+                <P class="mt-2 fw-5"><strong>SMILES :</strong> <br> <P>{{dicts.smiles }}</P></p> 
+                <p class="mt-2 fw-5 "><strong > InChIKey: </strong> <br> <p>{{dicts.inchikey}}</p> </p> 
+                  <p class="mt-2 fw-5"> <strong>DeepSMILES : </strong> <br> <p>{{dicts.deepsmiles}} </p></p>
                 </div>
+          </div>
             </section>
             <section id="mcprop">
                 <!-- Biological Activity Section -->
-                <div class="mt-4">
+                <div class="">
                     <h2>Molecular property</h2>
+                    <hr>
                     <table class="table table-primary ">
                         <thead>
                           <tr>
@@ -70,40 +105,69 @@
                         <tbody>
                           <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>Molecular weight</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
+                            <td>Log p</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">topological polar surface area </td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">Number hydrogen bond acceptors</td>
                           </tr><tr>
                             <th scope="row">5</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">Number hydrogen bond donors</td>
                           </tr><tr>
                             <th scope="row">6</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">Number carbon atoms</td>
                           </tr><tr>
                             <th scope="row">7</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2"> Number heavy atoms</td>
                           </tr><tr>
                             <th scope="row">8</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">Number heteroatoms</td>
                           </tr><tr>
                             <th scope="row">9</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">Number nitrogen atom</td>
                           </tr><tr>
                             <th scope="row">10</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">Number sulfur atoms</td>
                           </tr>
+                        </tr><tr>
+                          <th scope="row">11</th>
+                          <td colspan="2"> Number chiral carbon atoms </td>
+                        </tr></tr><tr>
+                          <th scope="row">12</th>
+                          <td colspan="2">stereochemical complexity</td>
+                        </tr></tr><tr>
+                          <th scope="row">13</th>
+                          <td colspan="2"> Number sp hybridized carbon atoms</td>
+                        </tr></tr><tr>
+                          <th scope="row">14</th>
+                          <td colspan="2">Number sp2 hybridized carbon atoms</td>
+                        </tr></tr><tr>
+                          <th scope="row">15</th>
+                          <td colspan="2">Number sp3 hybridized carbon atoms</td>
+                        </tr></tr><tr>
+                          <th scope="row">16</th>
+                          <td colspan="2">shape complexity</td>
+                        </tr></tr><tr>
+                          <th scope="row">17</th>
+                          <td colspan="2">Number rotatable bonds</td>
+                        </tr></tr><tr>
+                          <th scope="row">18</th>
+                          <td colspan="2">Number aliphatic rings</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">19</th>
+                          <td colspan="2">Number aromatic rings</td>
+                        </tr>
                         </tbody>
                       </table>
                     
@@ -112,7 +176,8 @@
 
             <section id="adme-prop">
                 <h2>ADME properties</h2>
-                <div class="mt-4"><table class="table table-primary ">
+                <hr>
+                <div class=""><table class="table table-primary ">
                     <thead>
                       <tr>
                         <th scope="col">S.NO</th>
@@ -123,39 +188,52 @@
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td>bioavailability score </td>
+                        <td></td>
                       </tr>
                       <tr>
                         <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
+                        <td>solubility class esol</td>
+                        <td></td>
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">solubility class silicos it</td>
                       </tr>
                       <tr>
                         <th scope="row">4</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">blood brain barrier permeation</td>
                       </tr><tr>
                         <th scope="row">5</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">gastrointestinal absorption</td>
                       </tr><tr>
                         <th scope="row">6</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">log kp skin permeation</td>
                       </tr><tr>
                         <th scope="row">7</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">Number of pains structural alerts</td>
                       </tr><tr>
                         <th scope="row">8</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2"> Number of  brenk structural alerts</td>
                       </tr><tr>
                         <th scope="row">9</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">cyp1a2 inhibitor</td>
                       </tr><tr>
                         <th scope="row">10</th>
-                        <td colspan="2">Larry the Bird</td>
+                        <td colspan="2">cyp2c19 inhibitor</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">11</th>
+                        <td colspan="2">cyp2c9 inhibitor</td>
+                      </tr><tr>
+                        <th scope="row">12</th>
+                        <td colspan="2">cyp2d6 inhibito</td>
+                      </tr><tr>
+                        <th scope="row">13</th>
+                        <td colspan="2"> cyp3a4 inhibitor</td>
+                      </tr><tr>
+                        <th scope="row">14</th>
+                        <td colspan="2">p glycoprotein substrat</td>
                       </tr>
                     </tbody>
                   </table>
@@ -164,8 +242,9 @@
                 </div>
             </section>
             <section id="druglike">
-                <div class="mt-4">
+                <div class="">
                     <h2>Druglikliness</h2>
+                    <hr>
                     <div class="mt-4">
                     <table class="table table-primary ">
                         <thead>
@@ -178,39 +257,33 @@
                         <tbody>
                           <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>lipinski violations</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
+                            <td>lipinski rule</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">ghose violations</td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">veber rule</td>
                           </tr><tr>
                             <th scope="row">5</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">ghose rule</td>
                           </tr><tr>
                             <th scope="row">6</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">gsk 4 400 rule</td>
                           </tr><tr>
                             <th scope="row">7</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2"> pfizer rule</td>
                           </tr><tr>
                             <th scope="row">8</th>
-                            <td colspan="2">Larry the Bird</td>
-                          </tr><tr>
-                            <th scope="row">9</th>
-                            <td colspan="2">Larry the Bird</td>
-                          </tr><tr>
-                            <th scope="row">10</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2">qedw score</td>
                           </tr>
                         </tbody>
                       </table>
@@ -219,8 +292,9 @@
 
             <!-- Research Findings Section -->
             <section id="external-link">
-                <div class="mt-4" id="externallink">
+                <div class="" id="externallink">
                     <h2>External links</h2>
+                    <hr>
                     <table class="table table-primary ">
                         <thead>
                           <tr>
@@ -272,29 +346,30 @@
             </section>
             <!-- References Section -->
             <section id="reference">
-                <div class="mt-4 ">
+                <div class="">
                     <h2>References</h2>
-                    <ul>
-                        <li>Author, et al. (Year). Title of the Research Paper. <i>Journal Name</i>, Volume(Issue), Page
-                            Range.
-                        </li>
-                        <!-- Add more references as needed -->
-                    </ul>
+                    <hr>
+                    <ol>
+                  {% for dict in dicts.reference_paper.all %}
+                     <li class=" mt-3"> <a href="{{ dict.reference }}" class="forlink fw-bold text-black">{{ dict.title }}</a></li>
+                  {% empty %}
+                      <p>No reference papers available.</p>
+                  {% endfor %}
+                    </ol>
                 </div>
             </section>
 
         </div>
         <div class="col-md-3 top-0 end-0" id="fixed-column">
-            {% for dict in dicts%}
             <div class="p text-end" id="fixed-column">
                 <div class="btn btn-primary top-0 ">
-                    <a href="{% url 'download_sdf' name=dict.name %}" style="color:white">
+                    <a href="{% url 'download_sdf' name=dicts.name %}" style="color:white">
                         DOWNLOAD (<span class="fs-5"> sdf</span>)
                     </a>
                 </div>
-            {% endfor%}
+        
                 <div class="d-flex  mt-3">
-                    <h2 class="mt-2 fw-medium ">Content</h2>
+                    <h3 class="mt-2">CONTENT</h3>
                 </div>
                 <div class="list-group mt-2 d-flex " style="border: 1px;">
                     <a href="#summary"><button type="button" class="list-group-item list-group-item-action "

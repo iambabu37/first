@@ -15,11 +15,13 @@
             <div class="">
                 <strong class="fs-5">Kingdom:</strong>
                 Plantae<br>
-                <strong class="fs-5">Family:</strong>
-                Pinaceae<br>
-                <strong class="fs-5">Group:</strong> Gymnosperms<br>
-                <strong class="fs-5">Synonymous names:</strong> Abies
-                nephrolepis<br>
+                {% if dicts.botanical_name %}
+                <strong class="fs-5">Common name :</strong> {{dicts.botanical_name}}<br>
+                {% endif%}
+                <strong class="fs-5">Family:</strong> {{dicts.family}}<br>
+                <strong class="fs-5">Group:</strong> {{dicts.groups}}<br>
+                <strong class="fs-5">Synonymous names:</strong> {{dicts.synonyms}}<br>
+                <strong class="fs-5">Descriptions:</strong><br>{{dicts.description}}<br>
                 
             </div>
         </div>

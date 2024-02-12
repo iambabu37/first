@@ -8,11 +8,17 @@ from django.http import HttpResponse, FileResponse
 import requests
 from tempfile import NamedTemporaryFile
 
+
 def about(request):
     return render(request,"my_app/about.html")
 
+
+
 def home(request):
     return render(request,"my_app/home.html")
+
+
+
 
 def contact(request):
 	if request.method == 'POST':
@@ -28,8 +34,11 @@ def plant(request):
     content = {"dicts":obj}
     return render(request,"my_app/plant.html",content)
 
+
 def help(request):
     return render(request,"my_app/help.html")
+
+
 
 def plantviews(request,name):
    
@@ -85,17 +94,17 @@ def search(request):
 
 def compound_detail(request,name):
     
-    dict = Phytochemical.objects.filter(name=name)
+    phytochemical_instance = get_object_or_404(Phytochemical, name=name)
     
-    content ={"dicts":dict}
+    content ={"dicts":phytochemical_instance}
     print(content)    
     return render (request,"my_app/compound_detail.html",content)
 
 def plant_compound_detail(request,name):
     
-    dicts = Phytochemical.objects.filter(name=name)
+    phytochemical_instance = get_object_or_404(Phytochemical, name=name)
     
-    content ={"dicts":dicts}
+    content ={"dicts":phytochemical_instance}
     print(content)    
     return render (request,"my_app/compound_detail.html",content)
 
