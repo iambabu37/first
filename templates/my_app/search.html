@@ -108,7 +108,9 @@
 								aria-current="true">
 								<div class="d-flex w-80 justify-content-between">
 									<h5 class="mb-1 text text-primary">{{ dict.name }}</h5>
+									{% if dict.chem_image %}
 									<small style = "height: 100px;"><img src="{{dict.chem_image.url }}" alt = "compound image " style = "height: 100px; width: 150px; border: 1px solid black; border-radius: 5px;"></small>
+									{% endif %}
 								</div>
 								<p class="mb-1">{{ dict.description }}</p>
 								<small>{{ dict.active_compound }}</small>

@@ -61,8 +61,8 @@ hr{
                     <!-- Compound Information -->
                     <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
                     <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.molecular_formula }}</p>
-                    <p class="fs-5"> <strong>IUPAC Name  :</strong>   {{dicts.IUPAC}}</p> 
-                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.IUPAC}}</p> 
+                    <p class="fs-5"> <strong>IUPAC Name  :</strong>   {{dicts.iupac_name}}</p> 
+                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.molecular_weight}}</p> 
                 </div>
             </div>
 
@@ -74,10 +74,12 @@ hr{
                    <h3>Summary</h3>
                    <hr>
                     <div class="summary-first" style="padding:5px 5px;">
-                    <p class="mt-2 fw-1"> <strong>IUPAC Name  :</strong>   {{dicts.name}}</p> 
-                    <P class="mt-2 fw-5"><strong>Synonymous Name :</strong> {{dict.synonymous_names}}</p> 
-                    <p class="mt-2 fw-5"><strong>Molecular Formula : </strong></p> 
-                      <p class="mt-2 fw-5"> <strong>Pubchem Id  : </strong>{{dicts.pubchem_id}} </p>
+                    <p class="mt-2 fw-1"> <strong>IUPAC Name  :</strong>   {{dicts.iupac_name}}</p> 
+                    <P class="mt-2 fw-5"><strong>Synonymous Name :</strong>
+                      <br> {{dicts.synonymous_names}}</p> 
+                    <p class="mt-2 fw-5"><strong>Molecular Formula : </strong>{{dicts.molecular_formula}}</p> 
+
+                    <p><strong>Pubchem : </strong><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.pubchem_id}}" target="_blank">{{dicts.pubchem_id }}</a> </p>
                     </div>
               </div>
               <div class="mt-4" >
@@ -303,46 +305,37 @@ hr{
                         <thead>
                           <tr>
                             <th scope="col">S.NO</th>
-                            <th scope="col">Property</th>
-                            <th scope="col">Value</th>
+                            <th scope="col">External Identifiers</th>
+                            <th scope="col">Links</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>PUBCHEM</td>
+                            <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.pubchem_id}}" target="_blank">PUBCHEM: {{dicts.pubchem_id }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
+                            <td>CHEMBL</td>
+                            <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL{{dicts.pubchem_id}}/" target="_blank">CHEMBL: {{dicts.chembl_id }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td >KEGG </td>
+                            <td ><a href="https://www.kegg.jp/entry/{{dicts.kegg_id}}" target="_blank">KEGG: {{dicts.kegg_id }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td></td>
+                            <td></td>
                           </tr><tr>
                             <th scope="row">5</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td ></td>
+                            <td ></td>
                           </tr><tr>
                             <th scope="row">6</th>
-                            <td colspan="2">Larry the Bird</td>
-                          </tr><tr>
-                            <th scope="row">7</th>
-                            <td colspan="2">Larry the Bird</td>
-                          </tr><tr>
-                            <th scope="row">8</th>
-                            <td colspan="2">Larry the Bird</td>
-                          </tr><tr>
-                            <th scope="row">9</th>
-                            <td colspan="2">Larry the Bird</td>
-                          </tr><tr>
-                            <th scope="row">10</th>
-                            <td colspan="2">Larry the Bird</td>
+                            <td colspan="2"></td>
                           </tr>
                         </tbody>
                       </table>
