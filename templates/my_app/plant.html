@@ -10,7 +10,7 @@
         {% for dict in dicts%}
         <div class="col-md-3 ps-3 g-2 pt-3 align-items-center">
             <a href="{% url 'plantdetail' dict.name %}"><div class="card " style="width: 16rem; ">
-                <img src="{{ dict.plant_image.url }}" class="card-img-top" alt="...">
+                <img src="{{ dict.plant_image.url }}" class="card-img-top" alt="plant image">
                 <div class="card-body">
                   <h5 class="card-title">{{dict.name}}</h5>
                   <p class="card-text text-wrap"><lead>{{dict.description|slice:":87"}} <strong> View more..</strong> </lead> </p>

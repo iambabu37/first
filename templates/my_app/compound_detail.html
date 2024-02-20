@@ -38,7 +38,10 @@ section{
   padding-top:80px !important;
   padding-bottom: 20px !important;
 }
-
+hr{
+  color:rgb(0, 110, 255);
+  border-width: 3px;
+}
 
 </style>
 
@@ -85,7 +88,8 @@ section{
                 <p class="mt-2 fw-1"> <strong>InChI :</strong> <br> <p >{{dicts.inchi}}</p></p> 
                 <P class="mt-2 fw-5"><strong>SMILES :</strong> <br> <P>{{dicts.smiles }}</P></p> 
                 <p class="mt-2 fw-5 "><strong > InChIKey: </strong> <br> <p>{{dicts.inchikey}}</p> </p> 
-                  <p class="mt-2 fw-5"> <strong>DeepSMILES : </strong> <br> <p>{{dicts.deepsmiles}} </p></p>
+                <p class="mt-2 fw-5"> <strong>DeepSMILES : </strong> <br> <p>{{dicts.deepsmiles}} </p></p>
+                <p class="mt-2 fw-5"> <strong>Fucntional Group : </strong> <br> <p>{{dicts.functional_groups}} </p></p>
                 </div>
           </div>
             </section>
@@ -360,10 +364,10 @@ section{
             </section>
 
         </div>
-        <div class="col-md-3 top-0 end-0" id="fixed-column">
+        <div class="col-md-3 top-0 end-0 " id="fixed-column">
             <div class="p text-end" id="fixed-column">
                 <div class="btn btn-primary top-0 ">
-                    <a href="{% url 'download_sdf' name=dicts.name %}" style="color:white">
+                    <a href="{% url 'download_sdf' name=dicts.name id=dicts.pubchem_id %}" style="color:white">
                         DOWNLOAD (<span class="fs-5"> sdf</span>)
                     </a>
                 </div>

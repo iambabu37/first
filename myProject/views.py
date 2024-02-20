@@ -30,7 +30,7 @@ def contact(request):
     
 
 def plant(request):
-    obj = Plant.objects.all()
+    obj = Plant.objects.all().order_by("name")
     content = {"dicts":obj}
     return render(request,"my_app/plant.html",content)
 
@@ -108,10 +108,10 @@ def plant_compound_detail(request,name):
     print(content)    
     return render (request,"my_app/compound_detail.html",content)
 
-def download_sdf(request, name):
+def download_sdf(request, name,id):
     # PubChem URL for the compound with the given name
     print(f"{name}")
-    pubchem_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/2244/record/SDF/"
+    pubchem_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/{id}/record/SDF/"
 
     # Fetch SDF content from PubChem
     response = requests.get(pubchem_url)
