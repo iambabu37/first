@@ -1,6 +1,6 @@
 import pandas as pd
 from django.core.management.base import BaseCommand
-from myapp.models import Plant  # Update with the correct import statement for your Plant model
+from myapp.models import *
 
 class Command(BaseCommand):
     help = 'Import data from Excel sheet into Django model'
@@ -16,14 +16,76 @@ class Command(BaseCommand):
 
             for index, row in df.iterrows():
                 # Assuming YourModel has fields like 'field1', 'field2', etc.
-                Plant.objects.create(
-                    name=row['Plant'],
-                    botanical_name=row['Botanical_Name'],
-                    family=row["Family"],
-                    part_used=row["Part_Used"],
-                    active_compound=row["Active_Compounds"],
-                    description=row["Properties"],
+                McProp.objects.create(
+                    name= row['Phytochemical name'],
+                    molecular_weight = row["Molecular weight (g/mol)"],
+                    Molprot =row["Molprot"],
+                    pubchem = row["pubchem"],
+                    surecheml= row["surecheml"],
+                    chembl = row["chembl"],
+                    zinc = row["zinc"],
+                    log_p=row['Log P'],
+                    topological_polar_surface_area=row["Topological polar surface area"],
+                    num_hydrogen_bond_acceptors=row["Number of hydrogen bond acceptors"],
+                    hydrogen_donor=row["Number of hydrogen bond donors"],
+                    num_carbon_atoms=row["Number of carbon atoms"],
+                    num_heavy_atoms=row["Number of heavy atoms"],
+                    num_heteroatoms=row["Number of heteroatoms"],
+                    num_nitrogen_atoms=row["Number of nitrogen atoms"],
+                    num_sulfur_atoms =row["Number of sulfur atoms"],
+                    num_chiral_carbon_atoms=row["Number of chiral carbon atoms"],
+                    stereochemical_complexity=row["Stereochemical complexity"],
+                    num_sp_hybridized_carbon_atoms=row["Number of sp hybridized carbon atoms"],
+                    num_sp2_hybridized_carbon_atoms=row[""],
+                    num_sp3_hybridized_carbon_atoms = row[""],
+                    shape_complexity=row['Shape complexity'],
+                    num_rotatable_bonds=row["Number of rotatable bonds"],
+                    num_aliphatic_carbocycles=row["Number of aliphatic carbocycles"],
+                    num_aliphatic_heterocycles=row['Number of aliphatic heterocycles'], 
+                    num_aliphatic_rings=row["Number of aliphatic rings"],
+                    num_aromatic_carbocycles=row["Number of aromatic carbocycles"],
+                    num_aromatic_heterocycles = row["Number of aromatic heterocycles"],
+                    num_aromatic_rings =row["Number of aromatic rings"],
+                    total_num_rings = row["Total number of rings"],
+                    num_saturated_carbocycles =row["Number of saturated carbocycles"],
+                    num_saturated_heterocycles = row["Number of saturated heterocycles"],
+                    num_saturated_rings = row["Number of saturated rings"],
+                    num_sssr = row["Number of Smallest Set of Smallest Rings (SSSR)"]
                     #reference_detail=row["References"]
+                )
+                McProp.objects.create(
+                    name= row['Phytochemical name'],
+                    lipinski_violations= row[""],
+                    lipinski_rule = row[""],
+                    ghose_violations = row[""],
+                    veber_rule = row[""],
+                    ghose_rule = row[""],
+                    gsk_4_400_rule = row[""],
+                    pfizer_3_75_rule = row[""],
+                    qedw_score = row[""]
+
+                )
+                McProp.objects.create(
+                    
+                    name= row['Phytochemical name'],
+                    bioavailability_score = row[""],
+                    solubility_class_esol = row[""],
+                    solubility_class_silicos_it = row[""],
+                    blood_brain_barrier_permeation = row[""],
+                    gastrointestinal_absorption = row[""],
+                    log_kp_skin_permeation = row[""],
+                    num_pains_structural_alerts = row[""],
+                    num_brenk_structural_alerts = row[""],
+                    cyp1a2_inhibitor = row[""],
+                    cyp2c19_inhibitor = row[""],
+                    cyp2c9_inhibitor = row[""],
+                    cyp2d6_inhibitor = row[""],
+                    cyp3a4_inhibitor = row[""],
+                    p_glycoprotein_substrate = row[""]
+
+
+
+
                 )
 
             self.stdout.write(self.style.SUCCESS('Data import successful'))

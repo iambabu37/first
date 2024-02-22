@@ -58,40 +58,14 @@
 
 				<form method="get" action="{% url 'search'%}" class="mt-3 form-inline">
 					<div class="row">
-						<div class="col-md-10 px-4">
+						<div class="col-md-11 px-4">
 							<!-- Search input -->
-							<div class="input-group mb-3">
-								<input type="text" style="width: 70%;" class=" ms-1 form-control border-black"
+							<div class="input-group mb-3 pt-2">
+								<input type="text" style="width: 80%;" class=" ms-1 form-control border-black pt-3 pb-3"
 									placeholder="Search Here..." name="main_search"
 									value="{{ request.GET.main_search }}">
 								<button class="btn btn-primary text-dark fs-4" type="submit">Search</button>
 							</div>
-						</div>
-						<!-- Dropdown for filtering options -->
-						<div class="col-md-1">
-							<!-- Dropdown for filtering options -->
-							<div class="form-group">
-								<select class="form-control custom-select btn btn-secondary btn-sm bg-light text-black"
-									id="filter_option" name="filter_option">
-									<option value="" selected disabled>Filter By &#9660;</option>
-									<option value="option1">Plant name</option>
-									<option value="option2">Family</option>
-									<!-- Add more options based on your filtering criteria -->
-								</select>
-							</div>
-						</div>
-						<div class="col-md-1">
-							<!-- Dropdown for sorting options -->
-							<div class="form-group">
-								<select class="form-control custom-select btn btn-secondary btn-sm bg-light text-black"
-									id="sort_by" name="sort_by">
-									<option value="" selected disabled>Sort By &#9660;</option>
-									<option value="name">Name</option>
-									<option value="date">Date</option>
-									<!-- Add more options based on your database fields -->
-								</select>
-							</div>
-							<!-- </div> -->
 						</div>
 					</div>
 				</form>
@@ -100,7 +74,7 @@
 
 
 				<div class="row ">
-					<div class=" col-12 mt-2" style="max-height: 500px; overflow-y: auto;">
+					<div class=" col-12 mt-4" style="max-height: 500px; overflow-y: auto;">
 						{% if dicts %}
 						{% for dict in dicts %}
 						<div class=" list-group mt-2 mx-3 border border-black w-70 babu">
@@ -131,32 +105,36 @@
 					</div>
 				</div>
 				<div class="row" >
-					<div class="col-md-12 ">
-
-						<div class="d-flex justify-content-center pt-5">
-							<nav aria-label="Page navigation example">
+					<div class="col-md-12 text-black">
+						<P class ="mt-5 me-3 text-end " ><strong>Page {{ dicts.number}} of {{dicts.paginator.num_pages}}</strong></P>
+						<div class="d-flex justify-content-center pt-1">
+							
+							<nav aria-label="Page navigation example text-black">
 								<ul class="pagination">
-			 						{% if dicts.has_previous %}
-									<li class="page-item">
-										<a class="page-link" href="/search/?page=1" aria-label="First">
-											<span aria-hidden="true">&laquo;</span>
+								{% if dicts.has_previous %}
+									<li class="page-item fw-bold">
+										<a class="page-link" href="/search/?page=1{% if request.GET.main_search %}&main_search={{ request.GET.main_search }}{% endif %}" aria-label="First">
+											First
 										</a>
 									</li>
-
+								
 									<li class="page-item">
-										<a class="page-link" href="/search/?page={{ dicts.previous_page_number}}"
+										<a class="page-link fw-bold" href="?page={{ dicts.previous_page_number }}{% if request.GET.main_search %}&main_search={{ request.GET.main_search }}{% endif %}"
 											aria-label="Previous">
 											<span aria-hidden="true">&laquo;</span>
 										</a>
 									</li>
-									{% endif%}
-									<li class="page-item"><a class="page-link" href="/search/?page-1">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
+								{% endif %}
+
+								{% for i in dicts.paginator.page_range %}
+									<li class="page-item">
+										<a class="page-link fw-bold" href="?page={{ i }}{% if request.GET.main_search %}&main_search={{ request.GET.main_search }}{% endif %}"">{{ i }}</a>
+									</li>
+								{% endfor %}
 
 									{% if dicts.has_next %}
-									<li class="page-item">
-										<a class="page-link" href="/search/?page={{ dicts.next_page_number}}"
+									<li class="page-item fw-bold">
+										<a class="page-link" href="?page={{ dicts.next_page_number }}{% if request.GET.main_search %}&main_search={{ request.GET.main_search }}{% endif %}"
 											aria-label="Next">
 											<span aria-hidden="true">&raquo;</span>
 										</a>
@@ -186,10 +164,13 @@
 
 </div>
 <script>
-	document.addEventListener('DOMContentLoaded', function () {
-		// Reset the selected option on page load
-		document.getElementById('filter_option').selectedIndex = 0;
-		document.getElementById('sort_by').selectedIndex = 0;
-	});
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the search input element
+        var searchInput = document.querySelector('input[name="main_search"]');
+  
+        // Clear the value of the search field
+        searchInput.value = '';
+
+    });
 </script>
 {% endblock index %}

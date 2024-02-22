@@ -56,26 +56,29 @@ def plantviews(request,name):
 # function for search 
 def search(request):
     
-    var = request.GET.get("main_search") if request.GET.get is not None else " "
+    var = request.GET.get("main_search","").strip()
     print(var)
+    page_number = request.GET.get('page',1)
     if not var or var.isspace():
         messages.error(request, 'Please enter a valid search term.')
         return render(request, "my_app/search.html")
     # dict = Plant.objects.all().order_by("name")
-    dict = Phytochemical.objects.filter(
-         Q(name__icontains = var) &
+    dicts = Phytochemical.objects.filter(
+         Q(name__icontains = var ) &
          Q(name__istartswith =var) 
-     )
-    print(dict)
-    if not dict:
+     ).order_by("name")
+    print(dicts)
+    if not dicts:
         messages.info(request, 'No results found.')
     
-    paginator = Paginator(dict, 10)  # Show 10 plants per page
+    paginator = Paginator(dicts, 5)  # Show 10 plants per page
     page_number = request.GET.get('page')
+    print(page_number)
+    print(request.GET)
     final_data = paginator.get_page(page_number)
 
     # try: 
-    #     plant_page = paginator.page(page)
+    #     plant_page = paginator.page(final_data)
     # except PageNotAnInteger:
     #     plant_page = paginator.page(1)
     # except EmptyPage:
@@ -94,7 +97,7 @@ def search(request):
 
 def compound_detail(request,name):
     
-    phytochemical_instance = get_object_or_404(Phytochemical, name=name)
+    phytochemical_instance = Phytochemical.objects.get(name=name)
     
     content ={"dicts":phytochemical_instance}
     print(content)    
@@ -138,3 +141,8 @@ def download_sdf(request, name,id):
         return response
 
     return HttpResponse(f"Error fetching SDF content for compound name {name} from PubChem")
+
+def advanced_search(request):
+     
+     return render(request,"my_app/advanced_search.html")
+     

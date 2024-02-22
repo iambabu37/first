@@ -8,6 +8,9 @@
         background-color: rgb(0, 110, 255) !important ;
         color:white !important;
     }
+    tr td:nth-child(3) {
+    width: 250px ;
+}
     #fixed-column {
         position: sticky;
         top: 100px;
@@ -31,7 +34,7 @@
     a {
         text-decoration: none;
     }
-    tr td:nth-child(2) {
+    tr td:nth-child(3) {
     font-weight: 700 ;
 }
 section{
@@ -60,9 +63,9 @@ hr{
                 <div class="col-md-6 mt-2" id="summary">
                     <!-- Compound Information -->
                     <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
-                    <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.molecular_formula }}</p>
-                    <p class="fs-5"> <strong>IUPAC Name  :</strong>   {{dicts.iupac_name}}</p> 
-                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.molecular_weight}}</p> 
+                    <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.mkproperties.molecular_formula }}</p>
+                    <p class="fs-5"> <strong>IUPAC Name  :</strong> <br> {{dicts.mkproperties.iupac_name}}</p> 
+                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.mkproperties.molecular_weight}}</p> 
                 </div>
             </div>
 
@@ -74,12 +77,10 @@ hr{
                    <h3>Summary</h3>
                    <hr>
                     <div class="summary-first" style="padding:5px 5px;">
-                    <p class="mt-2 fw-1"> <strong>IUPAC Name  :</strong>   {{dicts.iupac_name}}</p> 
+                    <p class="mt-2 fw-1"> <strong>IUPAC Name  :</strong>  <br>{{dicts.mkproperties.iupac_name}}</p> 
                     <P class="mt-2 fw-5"><strong>Synonymous Name :</strong>
                       <br> {{dicts.synonymous_names}}</p> 
-                    <p class="mt-2 fw-5"><strong>Molecular Formula : </strong>{{dicts.molecular_formula}}</p> 
-
-                    <p><strong>Pubchem : </strong><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.pubchem_id}}" target="_blank">{{dicts.pubchem_id }}</a> </p>
+                    <p class="mt-2 fw-5"><strong>Molecular Formula : </strong>{{dicts.mkproperties.molecular_formula}}</p> 
                     </div>
               </div>
               <div class="mt-4" >
@@ -101,82 +102,113 @@ hr{
                     <h2>Molecular property</h2>
                     <hr>
                     <table class="table table-primary ">
-                        <thead>
-                          <tr>
-                            <th scope="col">S.NO</th>
-                            <th scope="col">Property</th>
-                            <th scope="col">Value</th>
-                          </tr>
-                        </thead>
-                        <tbody>
+                      <thead>
+                        <tr>
+                          <th scope="col">S.NO</th>
+                          <th scope="col">Property</th>
+                          <th scope="col" style="align-items: start;">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody >
                           <tr>
                             <th scope="row">1</th>
                             <td>Molecular weight</td>
-                            <td></td>
+                            <td>{{ dicts.mkproperties.molecular_weight }}</td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
                             <td>Log p</td>
-                            <td></td>
+                            <td>{{ dicts.mkproperties.log_p }}</td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">topological polar surface area </td>
+                            <td>topological polar surface area </td>
+                            <td>{{dicts.mkproperties.topological_polar_surface_area}}</td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td colspan="2">Number hydrogen bond acceptors</td>
-                          </tr><tr>
-                            <th scope="row">5</th>
-                            <td colspan="2">Number hydrogen bond donors</td>
-                          </tr><tr>
-                            <th scope="row">6</th>
-                            <td colspan="2">Number carbon atoms</td>
-                          </tr><tr>
-                            <th scope="row">7</th>
-                            <td colspan="2"> Number heavy atoms</td>
-                          </tr><tr>
-                            <th scope="row">8</th>
-                            <td colspan="2">Number heteroatoms</td>
-                          </tr><tr>
-                            <th scope="row">9</th>
-                            <td colspan="2">Number nitrogen atom</td>
-                          </tr><tr>
-                            <th scope="row">10</th>
-                            <td colspan="2">Number sulfur atoms</td>
+                            <td>Number hydrogen bond acceptors</td>
+                            <td>{{dicts.mkproperties.num_hydrogen_bond_acceptors}}</td>
                           </tr>
-                        </tr><tr>
+                          <tr>
+                            <th scope="row">5</th>
+                            <td >Number hydrogen bond donors</td>
+                            <td>{{dicts.mkproperties.hydrogen_donor}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">6</th>
+                            <td  >Number carbon atoms</td>
+                            <td>{{dicts.mkproperties.num_carbon_atoms}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">7</th>
+                            <td  > Number heavy atoms</td>
+                            <td>{{dicts.mkproperties.num_heavy_atoms}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">8</th>
+                            <td  >Number heteroatoms</td>
+                            <td>{{dicts.mkproperties.num_heteroatoms}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">9</th>
+                            <td  >Number nitrogen atom</td>
+                            <td>{{dicts.mkproperties.num_nitrogen_atoms}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">10</th>
+                            <td  >Number sulfur atoms</td>
+                            <td>{{dicts.mkproperties.num_sulfur_atoms}}</td>
+                          </tr>
+                        <tr>
                           <th scope="row">11</th>
-                          <td colspan="2"> Number chiral carbon atoms </td>
-                        </tr></tr><tr>
+                          <td  > Number chiral carbon atoms </td>
+                          <td>{{dicts.mkproperties.num_chiral_carbon_atoms}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">12</th>
-                          <td colspan="2">stereochemical complexity</td>
-                        </tr></tr><tr>
+                          <td  >stereochemical complexity</td>
+                          <td>{{dicts.mkproperties.stereochemical_complexity}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">13</th>
-                          <td colspan="2"> Number sp hybridized carbon atoms</td>
-                        </tr></tr><tr>
+                          <td  > Number sp hybridized carbon atoms</td>
+                          <td>{{dicts.mkproperties.num_sp_hybridized_carbon_atoms}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">14</th>
-                          <td colspan="2">Number sp2 hybridized carbon atoms</td>
-                        </tr></tr><tr>
+                          <td  >Number sp2 hybridized carbon atoms</td>
+                          <td>{{dicts.mkproperties.num_sp2_hybridized_carbon_atoms}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">15</th>
-                          <td colspan="2">Number sp3 hybridized carbon atoms</td>
-                        </tr></tr><tr>
+                          <td  >Number sp3 hybridized carbon atoms</td>
+                          <td>{{dicts.mkproperties.num_sp3_hybridized_carbon_atoms}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">16</th>
-                          <td colspan="2">shape complexity</td>
-                        </tr></tr><tr>
+                          <td  >shape complexity</td>
+                          <td>{{dicts.mkproperties.shape_complexity}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">17</th>
-                          <td colspan="2">Number rotatable bonds</td>
-                        </tr></tr><tr>
+                          <td  >Number rotatable bonds</td>
+                          <td>{{dicts.mkproperties.num_rotatable_bonds}}</td>
+                        </tr>
+                        <tr>
                           <th scope="row">18</th>
-                          <td colspan="2">Number aliphatic rings</td>
+                          <td  >Number aliphatic rings</td>
+                          <td>{{dicts.mkproperties.num_aliphatic_rings}}</td>
                         </tr>
                         <tr>
                           <th scope="row">19</th>
-                          <td colspan="2">Number aromatic rings</td>
+                          <td  >Number aromatic rings</td>
+                          <td>{{dicts.mkproperties.num_aromatic_rings}}</td>
                         </tr>
-                        </tbody>
+                        
+                      </tbody>
                       </table>
-                    
+                                          
                 </div>
             </section>
 
@@ -204,42 +236,54 @@ hr{
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td colspan="2">solubility class silicos it</td>
+                        <td >solubility class silicos it</td>
+                        <td></td>
                       </tr>
                       <tr>
                         <th scope="row">4</th>
-                        <td colspan="2">blood brain barrier permeation</td>
+                        <td  >blood brain barrier permeation</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">5</th>
-                        <td colspan="2">gastrointestinal absorption</td>
+                        <td  >gastrointestinal absorption</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">6</th>
-                        <td colspan="2">log kp skin permeation</td>
+                        <td  >log kp skin permeation</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">7</th>
-                        <td colspan="2">Number of pains structural alerts</td>
+                        <td  >Number of pains structural alerts</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">8</th>
-                        <td colspan="2"> Number of  brenk structural alerts</td>
+                        <td  > Number of  brenk structural alerts</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">9</th>
-                        <td colspan="2">cyp1a2 inhibitor</td>
+                        <td  >cyp1a2 inhibitor</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">10</th>
-                        <td colspan="2">cyp2c19 inhibitor</td>
+                        <td  >cyp2c19 inhibitor</td>
+                        <td></td>
                       </tr>
                       <tr>
                         <th scope="row">11</th>
-                        <td colspan="2">cyp2c9 inhibitor</td>
+                        <td  >cyp2c9 inhibitor</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">12</th>
-                        <td colspan="2">cyp2d6 inhibito</td>
+                        <td  >cyp2d6 inhibito</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">13</th>
-                        <td colspan="2"> cyp3a4 inhibitor</td>
+                        <td  > cyp3a4 inhibitor</td>
+                        <td></td>
                       </tr><tr>
                         <th scope="row">14</th>
-                        <td colspan="2">p glycoprotein substrat</td>
+                        <td  >p glycoprotein substrat</td>
+                        <td></td>
                       </tr>
                     </tbody>
                   </table>
@@ -273,23 +317,29 @@ hr{
                           </tr>
                           <tr>
                             <th scope="row">3</th>
-                            <td colspan="2">ghose violations</td>
+                            <td  >ghose violations</td>
+                            <td></td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td colspan="2">veber rule</td>
+                            <td  >veber rule</td>
+                            <td></td>
                           </tr><tr>
                             <th scope="row">5</th>
-                            <td colspan="2">ghose rule</td>
+                            <td  >ghose rule</td>
+                            <td></td>
                           </tr><tr>
                             <th scope="row">6</th>
-                            <td colspan="2">gsk 4 400 rule</td>
+                            <td  >gsk 4 400 rule</td>
+                            <td></td>
                           </tr><tr>
                             <th scope="row">7</th>
-                            <td colspan="2"> pfizer rule</td>
+                            <td  > pfizer rule</td>
+                            <td></td>
                           </tr><tr>
                             <th scope="row">8</th>
-                            <td colspan="2">qedw score</td>
+                            <td  >qedw score</td>
+                            <td></td>
                           </tr>
                         </tbody>
                       </table>
@@ -313,29 +363,35 @@ hr{
                           <tr>
                             <th scope="row">1</th>
                             <td>PUBCHEM</td>
-                            <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.pubchem_id}}" target="_blank">PUBCHEM: {{dicts.pubchem_id }}</a></td>
+                            <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.pubchem_id}}" target="_blank">PUBCHEM: {{dicts.mkproperties.pubchem }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
                             <td>CHEMBL</td>
-                            <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL{{dicts.pubchem_id}}/" target="_blank">CHEMBL: {{dicts.chembl_id }}</a></td>
+                            <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL{{dicts.pubchem_id}}/" target="_blank">CHEMBL: {{dicts.mkproperties.chembl }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
                             <td >KEGG </td>
-                            <td ><a href="https://www.kegg.jp/entry/{{dicts.kegg_id}}" target="_blank">KEGG: {{dicts.kegg_id }}</a></td>
+                            <td ><a href="https://www.kegg.jp/entry/{{dicts.mkproperties.kegg}}" target="_blank">KEGG: {{dicts.mkproperties.kegg }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td></td>
-                            <td></td>
+                            <td>ZINC</td>
+                            <td><a href="https://zinc15.docking.org/substances/{{dicts.mkproperties.zinc}}/" target="_blank">ZINC: {{dicts.mkproperties.zinc }}</a></td>
                           </tr><tr>
                             <th scope="row">5</th>
-                            <td ></td>
-                            <td ></td>
+                            <td >SURECHEMBL</td>
+                            <td ><a href="https://www.surechembl.org/chemicaL/{{dicts.mkproperties.surecheml}}/" target="_blank">SCHEMBL : {{dicts.mkproperties.surecheml }}</a></td>
                           </tr><tr>
                             <th scope="row">6</th>
-                            <td colspan="2"></td>
+                            <td >IMPPAT</td>
+                            <td><a href="https://cb.imsc.res.in/imppat/phytochemical-detailedpage/{{dicts.mkproperties.impaat}}/" target="_blank">IMPPAT : {{ dicts.mkproperties.impaat}}</a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">7</th>
+                            <td >MOLPROT</td>
+                            <td><a href="https://www.molport.com/shop/compound/Molport{{dicts.mkproperties.Molprot}}/" target="_blank">MOLPROT : {{ dicts.mkproperties.Molprot}}</a></td>
                           </tr>
                         </tbody>
                       </table>
@@ -366,7 +422,7 @@ hr{
                 </div>
         
                 <div class="d-flex  mt-3">
-                    <h3 class="mt-2">CONTENT</h3>
+                    <h4 class="mt-2">CONTENT</h4>
                 </div>
                 <div class="list-group mt-2 d-flex " style="border: 1px;">
                     <a href="#summary"><button type="button" class="list-group-item list-group-item-action "
