@@ -22,6 +22,7 @@ class Command(BaseCommand):
                     Molprot =row["Molprot"],
                     pubchem = row["pubchem"],
                     surecheml= row["surecheml"],
+                    impaat = row["Phytochemical id "][2:],
                     chembl = row["chembl"],
                     zinc = row["zinc"],
                     log_p=row['Log P'],
@@ -36,8 +37,8 @@ class Command(BaseCommand):
                     num_chiral_carbon_atoms=row["Number of chiral carbon atoms"],
                     stereochemical_complexity=row["Stereochemical complexity"],
                     num_sp_hybridized_carbon_atoms=row["Number of sp hybridized carbon atoms"],
-                    num_sp2_hybridized_carbon_atoms=row[""],
-                    num_sp3_hybridized_carbon_atoms = row[""],
+                    num_sp2_hybridized_carbon_atoms=row["sp2_atoms"],
+                    num_sp3_hybridized_carbon_atoms = row["sp3_atoms"],
                     shape_complexity=row['Shape complexity'],
                     num_rotatable_bonds=row["Number of rotatable bonds"],
                     num_aliphatic_carbocycles=row["Number of aliphatic carbocycles"],
@@ -53,35 +54,35 @@ class Command(BaseCommand):
                     num_sssr = row["Number of Smallest Set of Smallest Rings (SSSR)"]
                     #reference_detail=row["References"]
                 )
-                McProp.objects.create(
+                DkProp.objects.create(
                     name= row['Phytochemical name'],
-                    lipinski_violations= row[""],
-                    lipinski_rule = row[""],
-                    ghose_violations = row[""],
-                    veber_rule = row[""],
-                    ghose_rule = row[""],
-                    gsk_4_400_rule = row[""],
-                    pfizer_3_75_rule = row[""],
-                    qedw_score = row[""]
+                    lipinski_violations= row["Lipinski’s rule of 5 filter"],
+                    lipinski_rule = row["Number of Lipinski"],
+                    ghose_violations = row["Number of Ghose filter violations"],
+                    veber_rule = row["Veber"],
+                    ghose_rule = row["Ghose_rule"],
+                    gsk_4_400_rule = row["GSK"],
+                    pfizer_3_75_rule = row["Pfizer"],
+                    qedw_score = row["QEDw_ score"]
 
                 )
-                McProp.objects.create(
+                ADMEProp.objects.create(
                     
                     name= row['Phytochemical name'],
-                    bioavailability_score = row[""],
-                    solubility_class_esol = row[""],
-                    solubility_class_silicos_it = row[""],
-                    blood_brain_barrier_permeation = row[""],
-                    gastrointestinal_absorption = row[""],
-                    log_kp_skin_permeation = row[""],
-                    num_pains_structural_alerts = row[""],
-                    num_brenk_structural_alerts = row[""],
-                    cyp1a2_inhibitor = row[""],
-                    cyp2c19_inhibitor = row[""],
-                    cyp2c9_inhibitor = row[""],
-                    cyp2d6_inhibitor = row[""],
-                    cyp3a4_inhibitor = row[""],
-                    p_glycoprotein_substrate = row[""]
+                    bioavailability_score = row["Bioavailability score"],
+                    solubility_class_esol = row["Solubility class [ESOL]"],
+                    solubility_class_silicos_it = row["Solubility class [Silicos-IT]"],
+                    blood_brain_barrier_permeation = row["Blood Brain Barrier permeation"],
+                    gastrointestinal_absorption = row["Gastrointestinal absorption"],
+                    log_kp_skin_permeation = row["Log K"],
+                    num_pains_structural_alerts = row["Number of PAINS structural alerts"],
+                    num_brenk_structural_alerts = row["Number of Brenk structural alerts"],
+                    cyp1a2_inhibitor = row["CYP1A2 inhibitor"],
+                    cyp2c19_inhibitor = row["CYP2C19 inhibitor"],
+                    cyp2c9_inhibitor = row["CYP2C9 inhibitor"],
+                    cyp2d6_inhibitor = row["CYP2D6 inhibitor"],
+                    cyp3a4_inhibitor = row["CYP3A4 inhibitor"],
+                    p_glycoprotein_substrate = row["P-glycoprotein substrate"]
 
 
 

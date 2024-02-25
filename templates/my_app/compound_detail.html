@@ -9,7 +9,7 @@
         color:white !important;
     }
     tr td:nth-child(3) {
-    width: 250px ;
+    width: 300px ;
 }
     #fixed-column {
         position: sticky;
@@ -65,7 +65,7 @@ hr{
                     <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
                     <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.mkproperties.molecular_formula }}</p>
                     <p class="fs-5"> <strong>IUPAC Name  :</strong> <br> {{dicts.mkproperties.iupac_name}}</p> 
-                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.mkproperties.molecular_weight}}</p> 
+                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.mkproperties.molecular_weight}} g/mol</p> 
                 </div>
             </div>
 
@@ -95,7 +95,8 @@ hr{
                 <p class="mt-2 fw-5"> <strong>Fucntional Group : </strong> <br> <p>{{dicts.functional_groups}} </p></p>
                 </div>
           </div>
-            </section>
+        </section>
+        {% if dicts.mkproperties %}
             <section id="mcprop">
                 <!-- Biological Activity Section -->
                 <div class="">
@@ -113,7 +114,7 @@ hr{
                           <tr>
                             <th scope="row">1</th>
                             <td>Molecular weight</td>
-                            <td>{{ dicts.mkproperties.molecular_weight }}</td>
+                            <td>{{ dicts.mkproperties.molecular_weight }} g/mol</td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
@@ -207,11 +208,13 @@ hr{
                         </tr>
                         
                       </tbody>
+                    
                       </table>
                                           
                 </div>
             </section>
-
+            {% endif %}
+            {% if dicts.admeproperties %}
             <section id="adme-prop">
                 <h2>ADME properties</h2>
                 <hr>
@@ -227,63 +230,63 @@ hr{
                       <tr>
                         <th scope="row">1</th>
                         <td>bioavailability score </td>
-                        <td></td>
+                        <td>{{dicts.admeproperties.bioavailability_score}}</td>
                       </tr>
                       <tr>
                         <th scope="row">2</th>
                         <td>solubility class esol</td>
-                        <td></td>
+                        <td>{{dicts.admeproperties.solubility_class_esol}}</td>
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td >solubility class silicos it</td>
-                        <td></td>
+                        <td>solubility class silicos it</td>
+                        <td>{{dicts.admeproperties.solubility_class_silicos_it}}</td>
                       </tr>
                       <tr>
                         <th scope="row">4</th>
-                        <td  >blood brain barrier permeation</td>
-                        <td></td>
+                        <td>blood brain barrier permeation</td>
+                        <td>{{dicts.admeproperties.blood_brain_barrier_permeation}}</td>
                       </tr><tr>
                         <th scope="row">5</th>
-                        <td  >gastrointestinal absorption</td>
-                        <td></td>
+                        <td>gastrointestinal absorption</td>
+                        <td>{{dicts.admeproperties.gastrointestinal_absorption}}</td>
                       </tr><tr>
                         <th scope="row">6</th>
-                        <td  >log kp skin permeation</td>
-                        <td></td>
+                        <td>log kp skin permeation</td>
+                        <td>{{dicts.admeproperties.log_kp_skin_permeation}}</td>
                       </tr><tr>
                         <th scope="row">7</th>
-                        <td  >Number of pains structural alerts</td>
-                        <td></td>
+                        <td>Number of pains structural alerts</td>
+                        <td>{{dicts.admeproperties.num_pains_structural_alerts}}</td>
                       </tr><tr>
                         <th scope="row">8</th>
-                        <td  > Number of  brenk structural alerts</td>
-                        <td></td>
+                        <td> Number of  brenk structural alerts</td>
+                        <td>{{dicts.admeproperties.num_brenk_structural_alerts}}</td>
                       </tr><tr>
                         <th scope="row">9</th>
-                        <td  >cyp1a2 inhibitor</td>
-                        <td></td>
+                        <td>cyp1a2 inhibitor</td>
+                        <td>{{dicts.admeproperties.cyp1a2_inhibitor}}</td>
                       </tr><tr>
                         <th scope="row">10</th>
-                        <td  >cyp2c19 inhibitor</td>
-                        <td></td>
+                        <td>cyp2c19 inhibitor</td>
+                        <td>{{dicts.admeproperties.cyp2c19_inhibitor}}</td>
                       </tr>
                       <tr>
                         <th scope="row">11</th>
-                        <td  >cyp2c9 inhibitor</td>
-                        <td></td>
+                        <td>cyp2c9 inhibitor</td>
+                        <td>{{dicts.admeproperties.cyp2c9_inhibitor}}</td>
                       </tr><tr>
                         <th scope="row">12</th>
-                        <td  >cyp2d6 inhibito</td>
-                        <td></td>
+                        <td >cyp2d6 inhibito</td>
+                        <td>{{dicts.admeproperties.cyp2d6_inhibitor}}</td>
                       </tr><tr>
                         <th scope="row">13</th>
                         <td  > cyp3a4 inhibitor</td>
-                        <td></td>
+                        <td>{{dicts.admeproperties.cyp3a4_inhibitor}}</td>
                       </tr><tr>
                         <th scope="row">14</th>
-                        <td  >p glycoprotein substrat</td>
-                        <td></td>
+                        <td>p glycoprotein substrate</td>
+                        <td>{{dicts.admeproperties.p_glycoprotein_substrate}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -291,6 +294,8 @@ hr{
                     
                 </div>
             </section>
+            {% endif %}
+            {% if dicts.dkproperties %}
             <section id="druglike">
                 <div class="">
                     <h2>Druglikliness</h2>
@@ -308,44 +313,43 @@ hr{
                           <tr>
                             <th scope="row">1</th>
                             <td>lipinski violations</td>
-                            <td></td>
+                            <td>{{dicts.dkproperties.lipinski_violations}}</td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
                             <td>lipinski rule</td>
-                            <td></td>
+                            <td>{{dicts.dkproperties.lipinski_rule}}</td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
                             <td  >ghose violations</td>
-                            <td></td>
+                            <td>{{dicts.dkproperties.ghose_violations}}</td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
-                            <td  >veber rule</td>
-                            <td></td>
+                            <td  >ghose rule</td>
+                            <td>{{dicts.dkproperties.ghose_rule}}</td>
                           </tr><tr>
                             <th scope="row">5</th>
-                            <td  >ghose rule</td>
-                            <td></td>
+                            <td  >verber rule</td>
+                            <td>{{dicts.dkproperties.veber_rule}}</td>
                           </tr><tr>
                             <th scope="row">6</th>
                             <td  >gsk 4 400 rule</td>
-                            <td></td>
+                            <td>{{dicts.dkproperties.gsk_4_400_rule}}</td>
                           </tr><tr>
                             <th scope="row">7</th>
                             <td  > pfizer rule</td>
-                            <td></td>
+                            <td>{{dicts.dkproperties.pfizer_3_75_rule}}</td>
                           </tr><tr>
                             <th scope="row">8</th>
                             <td  >qedw score</td>
-                            <td></td>
+                            <td>{{dicts.dkproperties.qedw_score}}</td>
                           </tr>
                         </tbody>
                       </table>
             </section>
-
-
+            {% endif %}
             <!-- Research Findings Section -->
             <section id="external-link">
                 <div class="" id="externallink">
@@ -363,12 +367,12 @@ hr{
                           <tr>
                             <th scope="row">1</th>
                             <td>PUBCHEM</td>
-                            <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.pubchem_id}}" target="_blank">PUBCHEM: {{dicts.mkproperties.pubchem }}</a></td>
+                            <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.mkproperties.pubchem}}" target="_blank">PUBCHEM: {{dicts.mkproperties.pubchem }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
                             <td>CHEMBL</td>
-                            <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL{{dicts.pubchem_id}}/" target="_blank">CHEMBL: {{dicts.mkproperties.chembl }}</a></td>
+                            <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/{{dicts.mkproperties.chembl }}/" target="_blank">CHEMBL: {{dicts.mkproperties.chembl }}</a></td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>

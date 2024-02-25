@@ -25,3 +25,15 @@ class Phytochemical(models.Model):
     dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE)
     admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE)
     
+
+##
+
+Marmelosin
+$Hypericin
+Achilleine
+Cuminaldehyde
+Lantadene A
+
+## dupliarte
+Carvacrol
+berberine
