@@ -4,459 +4,536 @@
 {% block cmd %}
 
 <style>
-    table thead tr th{
-        background-color: rgb(0, 110, 255) !important ;
-        color:white !important;
-    }
-    tr td:nth-child(3) {
-    width: 300px ;
-}
-    #fixed-column {
-        position: sticky;
-        top: 100px;
+  table thead tr th {
+    background-color: rgb(0, 110, 255) !important;
+    color: white !important;
+  }
 
-    }
-    .forlink:hover{
-      color : rgb(0, 110, 255) !important;
-      font-weight: 700 !important;
-      transition: 0.50ms;
-    }
+  tr td:nth-child(3) {
+    width: 300px;
+  }
 
-    .list-group .list-group-item{
-        border-radius: 12px;
-    
-    }
-    .list-group-item:hover {
-        background-color: rgb(0, 110, 255);
-        color: white;
-        transition: 0.15s;
-    }
-    a {
-        text-decoration: none;
-    }
-    tr td:nth-child(3) {
-    font-weight: 700 ;
-}
-section{
-  padding-top:80px !important;
-  padding-bottom: 20px !important;
-}
-hr{
-  color:rgb(0, 110, 255);
-  border-width: 3px;
-}
+  #fixed-column {
+    position: sticky;
+    top: 100px;
 
+  }
+
+  .forlink:hover {
+    color: rgb(0, 110, 255) !important;
+    font-weight: 700 !important;
+    transition: 0.50ms;
+  }
+
+  .list-group .list-group-item {
+    border-radius: 12px;
+
+  }
+
+  .list-group-item:hover {
+    background-color: rgb(0, 110, 255);
+    color: white;
+    transition: 0.15s;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  tr td:nth-child(3) {
+    font-weight: 700;
+  }
+
+  section {
+    padding-top: 80px !important;
+    padding-bottom: 20px !important;
+  }
+
+  hr {
+    color: rgb(0, 110, 255);
+    border-width: 3px;
+  }
 </style>
 
-<div class="container mt-5 pt-5">
-    <div class="row main-content">
-        <div class="col-md-9 pt-4">
-            <h1 class="mb-4">{{dicts.name}}</h1>
-            <div class="row">
-                <div class="col-md-6">
-                  {% if dicts.chem_image %}
-                    <!-- Compound Image -->
-                    <img style="width:300px;" src="{{dicts.chem_image.url}}" alt="Compound Image"
-                        class="compound-image mb-3">
-                  {% endif %}
-                </div>
-                <div class="col-md-6 mt-2" id="summary">
-                    <!-- Compound Information -->
-                    <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
-                    <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.mkproperties.molecular_formula }}</p>
-                    <p class="fs-5"> <strong>IUPAC Name  :</strong> <br> {{dicts.mkproperties.iupac_name}}</p> 
-                    <p class="fs-5"> <strong>Molecular Weight :</strong>   {{dicts.mkproperties.molecular_weight}} g/mol</p> 
-                </div>
-            </div>
+<div class="container mt-5 pt-5" id="summary">
+  <div class="row main-content">
+    <div class="col-md-9 pt-4">
+      <h1 class="mb-4">{{dicts.name}}</h1>
+      <div class="row">
+        <div class="col-md-6">
+          {% if dicts.chem_image %}
+          <!-- Compound Image -->
+          <img style="width:300px;" src="{{dicts.chem_image.url}}" alt="Compound Image" class="compound-image mb-3">
+          {% endif %}
+        </div>
+        <div class="col-md-6 mt-2" >
+          <!-- Compound Information -->
+          <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
+          <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.mkproperties.molecular_formula }}</p>
+          <p class="fs-5"> <strong>IUPAC Name :</strong> <br> {{dicts.mkproperties.iupac_name}}</p>
+          <p class="fs-5"> <strong>Molecular Weight :</strong> {{dicts.mkproperties.molecular_weight}} g/mol</p>
+        </div>
+      </div>
 
-            <!-- Chemical Structure Section -->
-            <section id="summary">
-                <div class="" >
-                    <h2>Title and summary</h2>
-                    <hr>
-                   <h3>Summary</h3>
-                   <hr>
-                    <div class="summary-first" style="padding:5px 5px;">
-                    <p class="mt-2 fw-1"> <strong>IUPAC Name  :</strong>  <br>{{dicts.mkproperties.iupac_name}}</p> 
-                    <P class="mt-2 fw-5"><strong>Synonymous Name :</strong>
-                      <br> {{dicts.synonymous_names}}</p> 
-                    <p class="mt-2 fw-5"><strong>Molecular Formula : </strong>{{dicts.mkproperties.molecular_formula}}</p> 
-                    </div>
-              </div>
-              <div class="mt-4" >
-              
-               <h3>Chemical Information</h3>
-               <hr>
-                <div class="summary-first" style="padding:5px 5px;">
-                <p class="mt-2 fw-1"> <strong>InChI :</strong> <br> <p >{{dicts.inchi}}</p></p> 
-                <P class="mt-2 fw-5"><strong>SMILES :</strong> <br> <P>{{dicts.smiles }}</P></p> 
-                <p class="mt-2 fw-5 "><strong > InChIKey: </strong> <br> <p>{{dicts.inchikey}}</p> </p> 
-                <p class="mt-2 fw-5"> <strong>DeepSMILES : </strong> <br> <p>{{dicts.deepsmiles}} </p></p>
-                <p class="mt-2 fw-5"> <strong>Fucntional Group : </strong> <br> <p>{{dicts.functional_groups}} </p></p>
-                </div>
+      <!-- Chemical Structure Section -->
+      <section id="summary">
+        <div class="">
+          <h2>Title and summary</h2>
+          <hr>
+          <h3>Summary</h3>
+          <hr>
+          <div class="summary-first" style="padding:5px 5px;">
+            <p class="mt-2 fw-1"> <strong>IUPAC Name :</strong> <br>{{dicts.mkproperties.iupac_name}}</p>
+            <P class="mt-2 fw-5"><strong>Synonymous Name :</strong>
+              <br> {{dicts.synonymous_names}}
+            </p>
+            <p class="mt-2 fw-5"><strong>Molecular Formula : </strong>{{dicts.mkproperties.molecular_formula}}</p>
           </div>
-        </section>
-        {% if dicts.mkproperties %}
-            <section id="mcprop">
-                <!-- Biological Activity Section -->
-                <div class="">
-                    <h2>Molecular property</h2>
-                    <hr>
-                    <table class="table table-primary ">
-                      <thead>
-                        <tr>
-                          <th scope="col">S.NO</th>
-                          <th scope="col">Property</th>
-                          <th scope="col" style="align-items: start;">Value</th>
-                        </tr>
-                      </thead>
-                      <tbody >
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Molecular weight</td>
-                            <td>{{ dicts.mkproperties.molecular_weight }} g/mol</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Log p</td>
-                            <td>{{ dicts.mkproperties.log_p }}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>topological polar surface area </td>
-                            <td>{{dicts.mkproperties.topological_polar_surface_area}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Number hydrogen bond acceptors</td>
-                            <td>{{dicts.mkproperties.num_hydrogen_bond_acceptors}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td >Number hydrogen bond donors</td>
-                            <td>{{dicts.mkproperties.hydrogen_donor}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">6</th>
-                            <td  >Number carbon atoms</td>
-                            <td>{{dicts.mkproperties.num_carbon_atoms}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">7</th>
-                            <td  > Number heavy atoms</td>
-                            <td>{{dicts.mkproperties.num_heavy_atoms}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">8</th>
-                            <td  >Number heteroatoms</td>
-                            <td>{{dicts.mkproperties.num_heteroatoms}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">9</th>
-                            <td  >Number nitrogen atom</td>
-                            <td>{{dicts.mkproperties.num_nitrogen_atoms}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">10</th>
-                            <td  >Number sulfur atoms</td>
-                            <td>{{dicts.mkproperties.num_sulfur_atoms}}</td>
-                          </tr>
-                        <tr>
-                          <th scope="row">11</th>
-                          <td  > Number chiral carbon atoms </td>
-                          <td>{{dicts.mkproperties.num_chiral_carbon_atoms}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">12</th>
-                          <td  >stereochemical complexity</td>
-                          <td>{{dicts.mkproperties.stereochemical_complexity}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">13</th>
-                          <td  > Number sp hybridized carbon atoms</td>
-                          <td>{{dicts.mkproperties.num_sp_hybridized_carbon_atoms}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">14</th>
-                          <td  >Number sp2 hybridized carbon atoms</td>
-                          <td>{{dicts.mkproperties.num_sp2_hybridized_carbon_atoms}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">15</th>
-                          <td  >Number sp3 hybridized carbon atoms</td>
-                          <td>{{dicts.mkproperties.num_sp3_hybridized_carbon_atoms}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">16</th>
-                          <td  >shape complexity</td>
-                          <td>{{dicts.mkproperties.shape_complexity}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">17</th>
-                          <td  >Number rotatable bonds</td>
-                          <td>{{dicts.mkproperties.num_rotatable_bonds}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">18</th>
-                          <td  >Number aliphatic rings</td>
-                          <td>{{dicts.mkproperties.num_aliphatic_rings}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">19</th>
-                          <td  >Number aromatic rings</td>
-                          <td>{{dicts.mkproperties.num_aromatic_rings}}</td>
-                        </tr>
-                        
-                      </tbody>
-                    
-                      </table>
-                                          
-                </div>
-            </section>
-            {% endif %}
-            {% if dicts.admeproperties %}
-            <section id="adme-prop">
-                <h2>ADME properties</h2>
-                <hr>
-                <div class=""><table class="table table-primary ">
-                    <thead>
-                      <tr>
-                        <th scope="col">S.NO</th>
-                        <th scope="col">Property</th>
-                        <th scope="col">Value</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>bioavailability score </td>
-                        <td>{{dicts.admeproperties.bioavailability_score}}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>solubility class esol</td>
-                        <td>{{dicts.admeproperties.solubility_class_esol}}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>solubility class silicos it</td>
-                        <td>{{dicts.admeproperties.solubility_class_silicos_it}}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>blood brain barrier permeation</td>
-                        <td>{{dicts.admeproperties.blood_brain_barrier_permeation}}</td>
-                      </tr><tr>
-                        <th scope="row">5</th>
-                        <td>gastrointestinal absorption</td>
-                        <td>{{dicts.admeproperties.gastrointestinal_absorption}}</td>
-                      </tr><tr>
-                        <th scope="row">6</th>
-                        <td>log kp skin permeation</td>
-                        <td>{{dicts.admeproperties.log_kp_skin_permeation}}</td>
-                      </tr><tr>
-                        <th scope="row">7</th>
-                        <td>Number of pains structural alerts</td>
-                        <td>{{dicts.admeproperties.num_pains_structural_alerts}}</td>
-                      </tr><tr>
-                        <th scope="row">8</th>
-                        <td> Number of  brenk structural alerts</td>
-                        <td>{{dicts.admeproperties.num_brenk_structural_alerts}}</td>
-                      </tr><tr>
-                        <th scope="row">9</th>
-                        <td>cyp1a2 inhibitor</td>
-                        <td>{{dicts.admeproperties.cyp1a2_inhibitor}}</td>
-                      </tr><tr>
-                        <th scope="row">10</th>
-                        <td>cyp2c19 inhibitor</td>
-                        <td>{{dicts.admeproperties.cyp2c19_inhibitor}}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">11</th>
-                        <td>cyp2c9 inhibitor</td>
-                        <td>{{dicts.admeproperties.cyp2c9_inhibitor}}</td>
-                      </tr><tr>
-                        <th scope="row">12</th>
-                        <td >cyp2d6 inhibito</td>
-                        <td>{{dicts.admeproperties.cyp2d6_inhibitor}}</td>
-                      </tr><tr>
-                        <th scope="row">13</th>
-                        <td  > cyp3a4 inhibitor</td>
-                        <td>{{dicts.admeproperties.cyp3a4_inhibitor}}</td>
-                      </tr><tr>
-                        <th scope="row">14</th>
-                        <td>p glycoprotein substrate</td>
-                        <td>{{dicts.admeproperties.p_glycoprotein_substrate}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+        </div>
+        <div class="mt-4">
 
-                    
-                </div>
-            </section>
-            {% endif %}
-            {% if dicts.dkproperties %}
-            <section id="druglike">
-                <div class="">
-                    <h2>Druglikliness</h2>
-                    <hr>
-                    <div class="mt-4">
-                    <table class="table table-primary ">
-                        <thead>
-                          <tr>
-                            <th scope="col">S.NO</th>
-                            <th scope="col">Property</th>
-                            <th scope="col">Value</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>lipinski violations</td>
-                            <td>{{dicts.dkproperties.lipinski_violations}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>lipinski rule</td>
-                            <td>{{dicts.dkproperties.lipinski_rule}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td  >ghose violations</td>
-                            <td>{{dicts.dkproperties.ghose_violations}}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td  >ghose rule</td>
-                            <td>{{dicts.dkproperties.ghose_rule}}</td>
-                          </tr><tr>
-                            <th scope="row">5</th>
-                            <td  >verber rule</td>
-                            <td>{{dicts.dkproperties.veber_rule}}</td>
-                          </tr><tr>
-                            <th scope="row">6</th>
-                            <td  >gsk 4 400 rule</td>
-                            <td>{{dicts.dkproperties.gsk_4_400_rule}}</td>
-                          </tr><tr>
-                            <th scope="row">7</th>
-                            <td  > pfizer rule</td>
-                            <td>{{dicts.dkproperties.pfizer_3_75_rule}}</td>
-                          </tr><tr>
-                            <th scope="row">8</th>
-                            <td  >qedw score</td>
-                            <td>{{dicts.dkproperties.qedw_score}}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-            </section>
-            {% endif %}
-            <!-- Research Findings Section -->
-            <section id="external-link">
-                <div class="" id="externallink">
-                    <h2>External links</h2>
-                    <hr>
-                    <table class="table table-primary ">
-                        <thead>
-                          <tr>
-                            <th scope="col">S.NO</th>
-                            <th scope="col">External Identifiers</th>
-                            <th scope="col">Links</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>PUBCHEM</td>
-                            <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.mkproperties.pubchem}}" target="_blank">PUBCHEM: {{dicts.mkproperties.pubchem }}</a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>CHEMBL</td>
-                            <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/{{dicts.mkproperties.chembl }}/" target="_blank">CHEMBL: {{dicts.mkproperties.chembl }}</a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td >KEGG </td>
-                            <td ><a href="https://www.kegg.jp/entry/{{dicts.mkproperties.kegg}}" target="_blank">KEGG: {{dicts.mkproperties.kegg }}</a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>ZINC</td>
-                            <td><a href="https://zinc15.docking.org/substances/{{dicts.mkproperties.zinc}}/" target="_blank">ZINC: {{dicts.mkproperties.zinc }}</a></td>
-                          </tr><tr>
-                            <th scope="row">5</th>
-                            <td >SURECHEMBL</td>
-                            <td ><a href="https://www.surechembl.org/chemicaL/{{dicts.mkproperties.surecheml}}/" target="_blank">SCHEMBL : {{dicts.mkproperties.surecheml }}</a></td>
-                          </tr><tr>
-                            <th scope="row">6</th>
-                            <td >IMPPAT</td>
-                            <td><a href="https://cb.imsc.res.in/imppat/phytochemical-detailedpage/{{dicts.mkproperties.impaat}}/" target="_blank">IMPPAT : {{ dicts.mkproperties.impaat}}</a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">7</th>
-                            <td >MOLPROT</td>
-                            <td><a href="https://www.molport.com/shop/compound/Molport{{dicts.mkproperties.Molprot}}/" target="_blank">MOLPROT : {{ dicts.mkproperties.Molprot}}</a></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-            </section>
-            <!-- References Section -->
-            <section id="reference">
-                <div class="">
-                    <h2>References</h2>
-                    <hr>
-                    <ol>
-                  {% for dict in dicts.reference_paper.all %}
-                     <li class=" mt-3"> <a href="{{ dict.reference }}" class="forlink fw-bold text-black">{{ dict.title }}</a></li>
-                  {% empty %}
-                      <p>No reference papers available.</p>
-                  {% endfor %}
-                    </ol>
-                </div>
-            </section>
+          <h3>Chemical Information</h3>
+          <hr>
+          <div class="summary-first" style="padding:5px 5px;">
+            <p class="mt-2 fw-1"> <strong>InChI :</strong> <br>
+            <p>{{dicts.inchi}}</p>
+            </p>
+            <P class="mt-2 fw-5"><strong>SMILES :</strong> <br>
+            <P>{{dicts.smiles }}</P>
+            </p>
+            <p class="mt-2 fw-5 "><strong> InChIKey: </strong> <br>
+            <p>{{dicts.inchikey}}</p>
+            </p>
+            <p class="mt-2 fw-5"> <strong>DeepSMILES : </strong> <br>
+            <p>{{dicts.deepsmiles}} </p>
+            </p>
+            <p class="mt-2 fw-5"> <strong>Fucntional Group : </strong> <br>
+            <p>{{dicts.functional_groups}} </p>
+            </p>
+          </div>
+        </div>
+      </section>
+      {% if dicts.mkproperties %}
+      <section id="mcprop">
+        <!-- Biological Activity Section -->
+        <div class="">
+          <h2>Molecular property</h2>
+          <hr>
+          <table class="table table-primary ">
+            <thead>
+              <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">Property</th>
+                <th scope="col" style="align-items: start;">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Molecular weight</td>
+                <td>{{ dicts.mkproperties.molecular_weight }} g/mol</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Log p</td>
+                <td>{{ dicts.mkproperties.log_p }}</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>topological polar surface area </td>
+                <td>{{dicts.mkproperties.topological_polar_surface_area}}</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Number hydrogen bond acceptors</td>
+                <td>{{dicts.mkproperties.num_hydrogen_bond_acceptors}}</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Number hydrogen bond donors</td>
+                <td>{{dicts.mkproperties.hydrogen_donor}}</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Number carbon atoms</td>
+                <td>{{dicts.mkproperties.num_carbon_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td> Number heavy atoms</td>
+                <td>{{dicts.mkproperties.num_heavy_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Number heteroatoms</td>
+                <td>{{dicts.mkproperties.num_heteroatoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Number nitrogen atom</td>
+                <td>{{dicts.mkproperties.num_nitrogen_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>Number sulfur atoms</td>
+                <td>{{dicts.mkproperties.num_sulfur_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td> Number chiral carbon atoms </td>
+                <td>{{dicts.mkproperties.num_chiral_carbon_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">12</th>
+                <td>stereochemical complexity</td>
+                <td>{{dicts.mkproperties.stereochemical_complexity}}</td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td> Number sp hybridized carbon atoms</td>
+                <td>{{dicts.mkproperties.num_sp_hybridized_carbon_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">14</th>
+                <td>Number sp2 hybridized carbon atoms</td>
+                <td>{{dicts.mkproperties.num_sp2_hybridized_carbon_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">15</th>
+                <td>Number sp3 hybridized carbon atoms</td>
+                <td>{{dicts.mkproperties.num_sp3_hybridized_carbon_atoms}}</td>
+              </tr>
+              <tr>
+                <th scope="row">16</th>
+                <td>shape complexity</td>
+                <td>{{dicts.mkproperties.shape_complexity}}</td>
+              </tr>
+              <tr>
+                <th scope="row">17</th>
+                <td>Number rotatable bonds</td>
+                <td>{{dicts.mkproperties.num_rotatable_bonds}}</td>
+              </tr>
+              <tr>
+                <th scope="row">18</th>
+                <td>Number aliphatic rings</td>
+                <td>{{dicts.mkproperties.num_aliphatic_rings}}</td>
+              </tr>
+              <tr>
+                <th scope="row">19</th>
+                <td>Number aromatic rings</td>
+                <td>{{dicts.mkproperties.num_aromatic_rings}}</td>
+              </tr>
+
+            </tbody>
+
+          </table>
 
         </div>
-        <div class="col-md-3 top-0 end-0 " id="fixed-column">
-            <div class="p text-end" id="fixed-column">
-                <div class="btn btn-primary top-0 ">
-                    <a href="{% url 'download_sdf' name=dicts.name id=dicts.pubchem_id %}" style="color:white">
-                        DOWNLOAD (<span class="fs-5"> sdf</span>)
-                    </a>
-                </div>
-        
-                <div class="d-flex  mt-3">
-                    <h4 class="mt-2">CONTENT</h4>
-                </div>
-                <div class="list-group mt-2 d-flex " style="border: 1px;">
-                    <a href="#summary"><button type="button" class="list-group-item list-group-item-action "
-                            aria-current="true"><strong>Title and summary</strong>
+      </section>
+      {% endif %}
+      {% if dicts.admeproperties %}
+      <section id="adme-prop">
+        <h2>ADME properties</h2>
+        <hr>
+        <div class="">
+          <table class="table table-primary ">
+            <thead>
+              <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">Property</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>bioavailability score </td>
+                <td>{{dicts.admeproperties.bioavailability_score}}</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>solubility class esol</td>
+                <td>{{dicts.admeproperties.solubility_class_esol}}</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>solubility class silicos it</td>
+                <td>{{dicts.admeproperties.solubility_class_silicos_it}}</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>blood brain barrier permeation</td>
+                <td>{{dicts.admeproperties.blood_brain_barrier_permeation}}</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>gastrointestinal absorption</td>
+                <td>{{dicts.admeproperties.gastrointestinal_absorption}}</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>log kp skin permeation</td>
+                <td>{{dicts.admeproperties.log_kp_skin_permeation}}</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Number of pains structural alerts</td>
+                <td>{{dicts.admeproperties.num_pains_structural_alerts}}</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td> Number of brenk structural alerts</td>
+                <td>{{dicts.admeproperties.num_brenk_structural_alerts}}</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>cyp1a2 inhibitor</td>
+                <td>{{dicts.admeproperties.cyp1a2_inhibitor}}</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>cyp2c19 inhibitor</td>
+                <td>{{dicts.admeproperties.cyp2c19_inhibitor}}</td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>cyp2c9 inhibitor</td>
+                <td>{{dicts.admeproperties.cyp2c9_inhibitor}}</td>
+              </tr>
+              <tr>
+                <th scope="row">12</th>
+                <td>cyp2d6 inhibito</td>
+                <td>{{dicts.admeproperties.cyp2d6_inhibitor}}</td>
+              </tr>
+              <tr>
+                <th scope="row">13</th>
+                <td> cyp3a4 inhibitor</td>
+                <td>{{dicts.admeproperties.cyp3a4_inhibitor}}</td>
+              </tr>
+              <tr>
+                <th scope="row">14</th>
+                <td>p glycoprotein substrate</td>
+                <td>{{dicts.admeproperties.p_glycoprotein_substrate}}</td>
+              </tr>
+            </tbody>
+          </table>
 
-                        </button></a>
-                    <a href="#mcprop" style="text-decoration: none;" id="btn"><button type="button"
-                            class="list-group-item list-group-item-action "><strong>Molecular
-                                properties</strong></button>
-                    </a>
-                    <a href="#adme-prop"><button type="button" class="list-group-item list-group-item-action"><strong>ADME properties</strong>
-                            </button></a>
 
-                    <a href="#druglike"><button type="button"
-                            class="list-group-item list-group-item-action"><strong>Druglikliness</strong></button>
-                    </a>
-
-                    <a href="#external-link"><button type="button" class="list-group-item list-group-item-action">
-                            <strong>External link</strong>
-                        </button></a>
-                    <a href="#reference">
-                        <button type="button" class="list-group-item list-group-item-action">
-                            <strong>Reference Links</strong>
-                        </button>
-                    </a>
-                </div>
-
-            </div>
         </div>
+      </section>
+      {% endif %}
+      <section id = "target">
+        <div class="">
+          <h2 >Targets</h2>
+          <hr>
+          <div class="mt-4">
+            <table class="table table-primary ">
+              <thead>
+                <tr>
+                  <th scope="col">S.NO</th>
+                  <th scope="col">Target name</th>
+                  <th scope="col">Docking score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for dict in dicts.target_propper.all%}
+                <tr>
+                  <th scope="row">1</th>
+                  <td><a href = "{% url 'target' dict.name %}">{{dict.iupac_name}}</a></td>
+                  <td>{{dict.score}}  kcal/mol</td>
+                </tr>
+                {% endfor %}
+               
+              </tbody>
+          
+            </table>
+          </div>
+        </div>
+
+      </section>
+      {% if dicts.dkproperties %}
+      <section id="druglike">
+        <div class="">
+          <h2>Druglikliness</h2>
+          <hr>
+          <div class="mt-4">
+            <table class="table table-primary ">
+              <thead>
+                <tr>
+                  <th scope="col">S.NO</th>
+                  <th scope="col">Property</th>
+                  <th scope="col">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>lipinski violations</td>
+                  <td>{{dicts.dkproperties.lipinski_violations}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>lipinski rule</td>
+                  <td>{{dicts.dkproperties.lipinski_rule}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>ghose violations</td>
+                  <td>{{dicts.dkproperties.ghose_violations}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>ghose rule</td>
+                  <td>{{dicts.dkproperties.ghose_rule}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>verber rule</td>
+                  <td>{{dicts.dkproperties.veber_rule}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>gsk 4 400 rule</td>
+                  <td>{{dicts.dkproperties.gsk_4_400_rule}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td> pfizer rule</td>
+                  <td>{{dicts.dkproperties.pfizer_3_75_rule}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>qedw score</td>
+                  <td>{{dicts.dkproperties.qedw_score}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+      <!-- Research Findings Section -->
+      <section id="external-link">
+        <div class="" id="externallink">
+          <h2>External links</h2>
+          <hr>
+          <table class="table table-primary ">
+            <thead>
+              <tr>
+                <th scope="col">S.NO</th>
+                <th scope="col">External Identifiers</th>
+                <th scope="col">Links</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>PUBCHEM</td>
+                <td><a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{dicts.mkproperties.pubchem}}"
+                    target="_blank">PUBCHEM: {{dicts.mkproperties.pubchem }}</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>CHEMBL</td>
+                <td><a href="https://www.ebi.ac.uk/chembl/compound_report_card/{{dicts.mkproperties.chembl }}/"
+                    target="_blank">CHEMBL: {{dicts.mkproperties.chembl }}</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>KEGG </td>
+                <td><a href="https://www.kegg.jp/entry/{{dicts.mkproperties.kegg}}" target="_blank">KEGG:
+                    {{dicts.mkproperties.kegg }}</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>ZINC</td>
+                <td><a href="https://zinc15.docking.org/substances/{{dicts.mkproperties.zinc}}/" target="_blank">ZINC:
+                    {{dicts.mkproperties.zinc }}</a></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>SURECHEMBL</td>
+                <td><a href="https://www.surechembl.org/chemicaL/{{dicts.mkproperties.surecheml}}/"
+                    target="_blank">SCHEMBL : {{dicts.mkproperties.surecheml }}</a></td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>IMPPAT</td>
+                <td><a href="https://cb.imsc.res.in/imppat/phytochemical-detailedpage/{{dicts.mkproperties.impaat}}/"
+                    target="_blank">IMPPAT : {{ dicts.mkproperties.impaat}}</a></td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>MOLPROT</td>
+                <td><a href="https://www.molport.com/shop/compound/Molport{{dicts.mkproperties.Molprot}}/"
+                    target="_blank">MOLPROT : {{ dicts.mkproperties.Molprot}}</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- References Section -->
+      <section id="reference">
+        <div class="">
+          <h2>References</h2>
+          <hr>
+          <ol>
+            {% for dict in dicts.reference_paper.all %}
+            <li class=" mt-3"> <a href="{{ dict.reference }}" class="forlink fw-bold text-black">{{ dict.title }}</a>
+            </li>
+            {% empty %}
+            <p>No reference papers available.</p>
+            {% endfor %}
+          </ol>
+        </div>
+      </section>
+
     </div>
+    <div class="col-md-3 top-0 end-0 " id="fixed-column">
+      <div class="p text-end" id="fixed-column">
+        <div class="btn btn-primary top-0 ">
+          <a href="{% url 'download_sdf' name=dicts.name id=dicts.pubchem_id %}" style="color:white">
+            DOWNLOAD (<span class="fs-5"> sdf</span>)
+          </a>
+        </div>
+
+        <div class="d-flex  mt-3">
+          <h4 class="mt-2">CONTENT</h4>
+        </div>
+        <div class="list-group mt-2 d-flex " style="border: 1px;">
+          <a href="#summary"><button type="button" class="list-group-item list-group-item-action "
+              aria-current="true"><strong>Title and summary</strong>
+
+            </button></a>
+          <a href="#mcprop" style="text-decoration: none;" id="btn"><button type="button"
+              class="list-group-item list-group-item-action "><strong>Molecular
+                properties</strong></button>
+          </a>
+          <a href="#adme-prop"><button type="button" class="list-group-item list-group-item-action"><strong>ADME
+                properties</strong>
+            </button></a>
+          <a href="#target"><button type="button"
+              class="list-group-item list-group-item-action"><strong>
+                Target 
+              </strong></button>
+          </a>
+          <a href="#druglike"><button type="button"
+              class="list-group-item list-group-item-action"><strong>Druglikliness</strong></button>
+          </a>
+
+          <a href="#external-link"><button type="button" class="list-group-item list-group-item-action">
+              <strong>External link</strong>
+            </button></a>
+          <a href="#reference">
+            <button type="button" class="list-group-item list-group-item-action">
+              <strong>Reference Links</strong>
+            </button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 </div>
 

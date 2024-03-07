@@ -31,8 +31,9 @@ urlpatterns = [
     path("detail/<str:name>/",views.plant_compound_detail, name = "compounddetail"),
     path('plant/plantdetail/<str:name>/',views.plantviews, name = 'plantdetail'),
     path('detail2/<str:name>/<str:id>/', views.download_sdf, name='download_sdf'), 
-    path("advancedsearch/",views.advanced_search,name="advanced_search")
+    path("advancedsearch/",views.advanced_search,name="advanced_search"),
+    path("detail/target/<str:name>/",views.target, name ="target")
 
-] 
+]               
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

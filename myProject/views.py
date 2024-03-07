@@ -145,4 +145,9 @@ def download_sdf(request, name,id):
 def advanced_search(request):
      
      return render(request,"my_app/advanced_search.html")
+
+def target(request,name):
+     obj = get_object_or_404(Target,name = name)
+     content = {"dicts":obj}
+     return render(request,"my_app/target.html",content)
      

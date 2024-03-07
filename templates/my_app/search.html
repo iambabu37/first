@@ -25,10 +25,10 @@
 
 
 
-<div class=" container-fluid mt-5 pt-5">
+<div class=" container-fluid mt-5 pt-4">
 	<div class="row">
-		<div class="col-md-2 top-25 end-25">
-			<div class="container ">
+		<div class="col-md-2 top-25 end-25 pt-4">
+			<!-- <div class="container ">
 
 				<ul class="nav nav-pills flex-column  ">
 					<h2 class="h2"> Catogery</h2>
@@ -48,7 +48,7 @@
 						</li>
 					</div>
 				</ul>
-			</div>
+			</div> -->
 
 		</div>
 		
@@ -84,7 +84,7 @@
 							<div class ="col-md-8">
 								<h5 class="mb-1 text text-primary">{{ dict.name }}</h5>
 								<h5 class="mb-1">{{ dict.mkproperties.molecular_weight }} g/mol</h5>
-								<small>{{ dict.mkproperties.iupac_name }}</small>
+								<small>{{ dict.mkproperties.iupac_name| slice:":100 " }}</small>
 							</div>
 							<div class="col-md-4">
 									
@@ -158,8 +158,8 @@
 
 
 
-		<div class="col-md-2 top-25 end-0">
-			<img src = "{% static 'image/first.png' %}" alt = "plant image "style="width:100%; height:100%;">
+		<div class="col-md-2 top-15 end-0 p-0">
+			<img src = "{% static 'image/first.png' %}" alt = "plant image "style="width:200px; height:500px;">
 			<!-- <h2>i am the index</h2>
 			<P>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab fuga inventore consequuntur voluptatem
 				excepturi

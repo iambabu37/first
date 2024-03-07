@@ -14,13 +14,22 @@ def img_chem(request,filename):
     new_file = "%s%s"%(now_time,filename)
     return os.path.join("upload/chem",new_file)
 
+def img_dock(request,filename):
+    now_time = datetime.datetime.now().strftime("%Y%m%d%H:%M::%S")
+    new_file = "%s%s"%(now_time,filename)
+    return os.path.join("upload/dock",new_file)
 
 class Reference(models.Model):
     reference = models.CharField(max_length=255,null = True,blank=True)
     title = models.CharField(max_length = 255,null = True, blank= True)
     def __str__(self):
         return self.title
-    
+
+class Target_reference(models.Model):
+    dock_reference = models.CharField(max_length=255,null = True,blank=True)
+    dock_title = models.CharField(max_length = 255,null = True, blank= True)
+    def __str__(self):
+        return self.dock_title    
 
 
 
@@ -35,11 +44,25 @@ class Contact(models.Model):
     def __str__(self):
         return str(self.name)
 
+class Target(models.Model):
+
+    name = models.CharField(max_length=255,null=True,blank=True,default="Not available")
+    score = models.CharField(max_length=255,null=True,blank=True,default="Not available")
+    iupac_name = models.CharField(max_length=555,null=True,blank=True,default = "Not available")
+    kegg = models.CharField(max_length = 255,null=True,blank = True,default = "Not available")
+    dock_im = models.CharField(max_length =255,blank = True,null = True,default = "Not available")
+    dock_image = models.ImageField(upload_to=img_dock,null = True,blank=True,default="Not available")
+    dock_reference = models.ManyToManyField(Target_reference,blank= True)
+    
+    def __str__(self):
+        return self.name
+
+
 class McProp(models.Model):
 
     name = models.CharField(max_length=255,null=True,blank=True,default="Not available")
     molecular_formula = models.CharField(max_length=255,null=True,blank=True,default="Not available")
-    iupac_name = models.CharField(max_length=255,null=True,blank=True,default = "Not available")
+    iupac_name = models.CharField(max_length=555,null=True,blank=True,default = "Not available")
     kegg = models.CharField(max_length = 255,null=True,blank = True,default = "Not available")
     impaat = models.CharField(max_length =255,blank = True,null = True,default = "Not available")
     chembl = models.CharField(max_length = 255,blank = True,null = True,default = "Not available" )
@@ -141,6 +164,7 @@ class Phytochemical(models.Model):
     mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE ,blank =True,null=True )
     dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE,blank=True,null=True)
     admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE,blank=True,null =True)
+    target_propper = models.ManyToManyField(Target,blank=True)
     reference_paper = models.ManyToManyField( Reference,blank=True)
 
     def __str__(self):
