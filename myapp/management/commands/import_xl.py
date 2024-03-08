@@ -18,13 +18,13 @@ class Command(BaseCommand):
                 # Assuming YourModel has fields like 'field1', 'field2', etc.
                 Phytochemical.objects.create(
                     name = row["Phytochemical name"],
-                    synonymous_names = row[""],
-                    smiles = row[""],
-                    chem_image= row[""],
-                    inchi = row[""],
-                    inchikey = row[""],
-                    deepsmile= row[""],
-                    functional_groups = row[""]
+                    synonymous_names = row["Synonymous chemical names"],
+                    smiles = row["smiles"],
+                    chem_image= row["image_url"],
+                    inchi = row["inchi"],
+                    inchikey = row["inchi_key"],
+                    deepsmiles= row["deep_smiles"],
+                    functional_groups = row["functional_groups"]
                 )
                 # McProp.objects.create(
                 #     name= row['Phytochemical name'],

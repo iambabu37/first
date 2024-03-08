@@ -19,9 +19,9 @@
 
 /* Colors */
 :root {
-  --color-default: #0a0d13;
-  --color-primary: #0d42ff;
-  --color-secondary: #0e1d34;
+  --color-default: #e1e6f0;
+   --color-primary: #0d42ff; 
+  --color-secondary: #e6ecf5;
 }
 
 /* Smooth scroll behavior */
@@ -34,7 +34,7 @@
 --------------------------------------------------------------*/
 body {
   font-family: var(--font-default);
-  color: var(--color-default);
+  /* color: var(--color-default); */
 }
 
 a {
@@ -289,7 +289,7 @@ section {
 }
 
 .header.sticked {
-  background: rgba(14, 29, 52, 0.9);
+  background: rgba(230, 235, 241, 0.9);
   padding: 15px 0;
   box-shadow: 0px 2px 20px rgba(14, 29, 52, 0.1);
 }
@@ -1703,8 +1703,7 @@ section {
 .hero {
   width: 100%;
   min-height: 50vh;
-  background-color: var(--color-secondary);
-  background-image: url("../image/hero-bg.png");
+  background:none;
   background-size: cover;
   background-position: center;
   position: relative;

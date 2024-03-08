@@ -18,9 +18,15 @@
 	}
 
 	.babu:hover {
-		background-color: #007bff;
-		color: white;
-	}
+    background-color: #007bff;
+    color: white;
+}
+
+.newone:active {
+    background-color: #007bff;
+	color:white
+}
+
 </style>
 
 
@@ -134,8 +140,8 @@
 								{% endif %}
 
 								{% for i in dicts.paginator.page_range %}
-									<li class="page-item">
-										<a class="page-link fw-bold" href="?page={{ i }}{% if request.GET.main_search %}&main_search={{ request.GET.main_search }}{% endif %}"">{{ i }}</a>
+									<li class="page-item newone {% if i == dicts.paginator.number %}active{% endif %}">
+										<a class="page-link fw-bold" href="?page={{ i }}{% if request.GET.main_search %}&main_search={{ request.GET.main_search }}{% endif %}">{{ i }}</a>
 									</li>
 								{% endfor %}
 

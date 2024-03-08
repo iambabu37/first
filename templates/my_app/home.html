@@ -2,13 +2,18 @@
 {% load static %}
 {% block home %}
 <section id="hero" class="hero d-flex align-items-center"
-  style="background-image : url('../../static/image/hero-bg.png');padding-top: 80px;">
+  style="background-image : url('../../static/image/head2.jpg');
+
+  padding-top: 80px; 
+  background-position: right;
+  background-position-y:-10px;
+  background-color:whitesmoke;">
   <!-- ... rest of your code ... -->
   <div class="container">
     <div class="row justify-content-between">
       <div class="col-lg  justify-content-center">
-        <h2 data-aos="fade-up">Plant-Derived Phytocompound Database </h2>
-        <h6 data-aos="fade-up" class='fs-5' data-aos-delay="100">Welcome to our botanical treasure trove! Discover the
+        <h2  style="color:rgb(48, 48, 48)">Plant-Derived Phytocompound Database </h2>
+        <h6 class='fs-5 text-dark' data-aos-delay="100">Welcome to our botanical treasure trove! Discover the
           magic of plant phytocompounds on our webpage. Immerse yourself in a world where nature's wisdom meets digital
           brilliance. Explore, learn, and be enchanted by the wonders of our Plant Phytocompound Database—your gateway
           to the extraordinary benefits of botanical brilliance
@@ -17,12 +22,12 @@
         <form action="{% url 'search' %}" class="form-search d-flex align-items-stretch mt-3 " data-aos="fade-up"
           data-aos-delay="200" method="get">
           <input type="text" class="form-control" name="main_search" placeholder="Search by compound name">
-          <button class="btn btn-primary fs-4">Search</button>
+          <button class="btn btn-primary fs-4 text-black">Search</button>
 
 
         </form>
 
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="row gy-4 text-black" data-aos="fade-up" data-aos-delay="400">
 
           <div class="col-lg-3 col-6">
             <div class="stats-item text-center w-100 h-100">
@@ -31,7 +36,7 @@
             </div>
           </div><!-- End Stats Item -->
 
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6 text-black">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
                 class="purecounter"></span>
@@ -39,7 +44,7 @@
             </div>
           </div><!-- End Stats Item -->
 
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6 text-black">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
                 class="purecounter"></span>
@@ -47,7 +52,7 @@
             </div>
           </div><!-- End Stats Item -->
 
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6 text-black">
             <div class="stats-item text-center w-100 h-100">
               <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
                 class="purecounter"></span>

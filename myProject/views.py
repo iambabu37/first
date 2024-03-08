@@ -64,14 +64,14 @@ def search(request):
         return render(request, "my_app/search.html")
     # dict = Plant.objects.all().order_by("name")
     dicts = Phytochemical.objects.filter(
-         Q(name__icontains = var ) &
-         Q(name__istartswith =var) 
+         Q(synonymous_names__icontains = var ) &
+         Q(synonymous_names__istartswith =var) 
      ).order_by("name")
     print(dicts)
     if not dicts:
         messages.info(request, 'No results found.')
     
-    paginator = Paginator(dicts, 5)  # Show 10 plants per page
+    paginator = Paginator(dicts, 10)  # Show 10 plants per page
     page_number = request.GET.get('page')
     print(page_number)
     print(request.GET)
