@@ -53,6 +53,9 @@
     color: rgb(0, 110, 255);
     border-width: 3px;
   }
+  .iupac-wrap {
+    white-space: pre-wrap;
+}
 </style>
 
 <div class="container mt-5 pt-5" id="summary">
@@ -70,7 +73,8 @@
           <!-- Compound Information -->
           <p class="fs-5 "><strong> Compound Name :</strong> {{dicts.name}}</p>
           <p class="fs-5 "><strong>Molecular Formula :</strong> {{dicts.mkproperties.molecular_formula }}</p>
-          <p class="fs-5"> <strong>IUPAC Name :</strong> <br> {{dicts.mkproperties.iupac_name}}</p>
+          <p class="fs-5"> <strong>IUPAC Name :</strong> </p>
+          <p class="fs-5" >{{dicts.mkproperties.iupac_name}}</p>
           <p class="fs-5"> <strong>Molecular Weight :</strong> {{dicts.mkproperties.molecular_weight}} g/mol</p>
         </div>
       </div>
@@ -83,7 +87,7 @@
           <h3>Summary</h3>
           <hr>
           <div class="summary-first" style="padding:5px 5px;">
-            <p class="mt-2 fw-1"> <strong>IUPAC Name :</strong> <br>{{dicts.mkproperties.iupac_name}}</p>
+            <p class="mt-2 fw-1"> <strong>IUPAC Name :</strong> <br><p>{{dicts.mkproperties.iupac_name}}</p> </p>
             <P class="mt-2 fw-5"><strong>Synonymous Name :</strong>
               <br> {{dicts.synonymous_names}}
             </p>
@@ -354,7 +358,7 @@
       {% if dicts.dkproperties %}
       <section id="druglike">
         <div class="">
-          <h2>Druglikliness</h2>
+          <h2>Druglikeness</h2>
           <hr>
           <div class="mt-4">
             <table class="table table-primary ">
@@ -479,7 +483,7 @@
           <hr>
           <ol>
             {% for dict in dicts.reference_paper.all %}
-            <li class=" mt-3"> <a href="{{ dict.reference }}" class="forlink fw-bold text-black">{{ dict.title }}</a>
+            <li class=" mt-3"> <a href="{{ dict.reference }}" class="forlink fw-bold text-black" target="_blank">{{ dict.title }}</a>
             </li>
             {% empty %}
             <p>No reference papers available.</p>
@@ -493,7 +497,7 @@
       <div class="p text-end" id="fixed-column">
         <div class="btn btn-primary top-0 ">
           <a href="{% url 'download_sdf' name=dicts.name id=dicts.pubchem_id %}" style="color:white">
-            DOWNLOAD (<span class="fs-5"> sdf</span>)
+            DOWNLOAD (<span class="fs-5"> sdf </span>)
           </a>
         </div>
 

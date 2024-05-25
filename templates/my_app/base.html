@@ -6,13 +6,16 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Phycm-DB</title>
+  <title>AnBac-DB</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
 
+  <link rel="icon" type="image/jpg" href="{% static 'image/favicon.jpg' %}">
+
   <!-- Google Fonts -->
+
   <!--   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
   <link
@@ -20,20 +23,42 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
+  <link herf="{% static 'css/bootstrap-icons.css' %}" rel=stylesheet>
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <!-- Include Bootstrap Icons stylesheet -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css" rel="stylesheet">
+
+
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="{% static 'js/jquery.dataTables.min.js'%}"></script>
-    
-<style>
-  body {
-    background-color: rgb(220, 250, 215);
-  }
-</style>
+
+  <style>
+    body {
+      background-color: rgb(220, 250, 215);
+    }
+
+    .logo img {
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      width: 220px;
+      position: absolute;
+      /* Position the image within the logo container */
+      /* Move the image up by half of the overflow value (30px/2 = 15px) */
+      left: 10px;
+    }
+
+    .icon_social {
+      height: 38px;
+      width: 38px;
+      border-radius: 19px;
+    }
+  </style>
 </head>
 
 <body>
@@ -43,8 +68,8 @@
 
       <a href="{%url 'home'%}" class="logo d-flex align-items-center log">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="{% static 'image/logo.png' %}" style = "border-radius: 10px;" alt="Logo ">
-        <h1>Anbac-DB</h1>
+        <img src="{% static 'image/logo.png' %}" style="border-radius: 10px; width:240px" alt="Logo ">
+
       </a>
 
       <i class="mobile-nav-show"></i>
@@ -54,17 +79,17 @@
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'search' %}">Search</a></li>
           <li><a href="{% url 'plant' %}">Plants</a></li>
-          <li><a href="{% url 'advanced_search' %}">Advanced search</a></li>
-          <li ><a href="{% url 'help' %}"> How to use </a>  
+          <li><a href="{% url 'advanced_search' %}">Acknowledgement</a></li>
+          <li><a href="{% url 'help' %}"> How to use </a>
           <li><a href="{% url 'contact' %}">Contact</a></li>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-<main class="mb-5 pb-5" style = >
+  <main class="mb-5 pb-5" style=>
 
-<!-- block for index page-->
+    <!-- block for index page-->
     {%block index %}
 
     {% endblock index %}
@@ -74,63 +99,69 @@
     {% block home %}
 
     {% endblock home %}
-<!-- block for plant page-->
+    <!-- block for plant page-->
 
     {% block plant %}
 
     {%endblock %}
 
-<!-- block for contact page-->
+    <!-- block for contact page-->
 
     {% block contact%}
 
     {% endblock contact%}
 
-<!-- block for help page-->
-    
+    <!-- block for help page-->
+
     {% block help %}
 
     {% endblock %}
 
-<!----block for plant detail-->
+    <!----block for plant detail-->
 
 
     {% block plantdetail %}
 
     {% endblock %}
-<!--BLOCK FOR CMD-->
+    <!--BLOCK FOR CMD-->
     {%block cmd%}
-    
+
     {%endblock%}
 
-<!--block for adv -->
+    <!--block for adv -->
 
     {% block adv %}
 
     {% endblock %}
 
-<!-- block for target-->
+    <!-- block for target-->
     {% block target %}
     {% endblock %}
 
   </main>
   <!-- ======= Footer ======= -->
 
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer" style="background-color: #051328;">
 
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Logis</span>
+            <span>Anbac-DB</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta
-            donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>The Antibacterial Phytocompound Database is a valuable resource that compiles information on natural
+            compounds found in plants with antibacterial properties. This database serves as a comprehensive and
+            user-friendly repository, offering a simple yet powerful tool for researchers, scientists, and healthcare
+            professionals.</p>
           <div class="social-links d-flex mt-4">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="twitter"><img class="icon_social" src="{% static 'image/twitter.png' %}"
+                alt="twitter"></a>
+            <a href="#" class="facebook"><img class="icon_social" src="{% static 'image/facebook.png' %}"
+                alt="twitter"></a>
+            <a href="https://www.instagram.com/bioinformaticsalu?igsh=YzJyNmZzdXp5eHZu" class="instagram" target="_blank"><img class="icon_social" src="{% static 'image/instagram.png' %}"
+                alt="twitter"></a>
+            <a href="https://youtube.com/@departmentofbioinformatics?si=bSXmr6zGeyvr6TNU" target="_blank" class="linkedin"><img class="icon_social" src="{% static 'image/youtube.png' %}"
+                alt="twitter"></a>
           </div>
         </div>
 
@@ -146,24 +177,22 @@
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
+          <h4>Anbac-DB Links</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'search' %}">Search</a></li>
+            <li><a href="{% url 'plant' %}">Plant</a></li>
+            <li><a href="{% url 'advanced_search' %}">Acknowledgement</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
           </ul>
         </div>
-
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
-          <p>
-            Bioinformatics department, <br>
+          <p>Bioinformatics department, <br>
             Alagappa university,<br>
-            Karaikudi-601301 <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
+            Karaikudi-630003 <br><br>
+            <strong>Phone:</strong>+917867893877<br>
+            <strong>Email:</strong>babukanthasamy333777@gmail.com<br>
           </p>
 
         </div>
@@ -176,7 +205,7 @@
         &copy; Copyright <strong><span>bob</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        
+
         Designed by <a href="#">Me</a>
       </div>
     </div>

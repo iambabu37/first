@@ -1,0 +1,125 @@
+{% extends "my_app/base.html"%}
+{% load static%}
+{% block adv %}
+<div class="container text-black pt-5 mt-5">
+    <div class="container" style="font-size:15px">
+        <div class="container mt-2 pd-2 md-2" style="font-size:15px">
+            <h4 style="text-align: center;" class="text-success"><strong>ACKNOWLEDGEMENT</strong></h4>
+            <P style="text-align: center; font-size: 16px;margin-top: 10px;">We are thankful to the developers of
+                following software, tools and databases
+                which were used to construct the Anbac-DB.</P>
+            <br>
+            <table class="table table-bordered" style="border-radius: 10px;
+             border-color: rgb(85, 85, 85);">
+                <thead class="text-white bg-color1">
+                    <tr>
+                        <th scope="col" class="bg-primary fs-5">Purpose</th>
+                        <th scope="col" class="bg-primary fs-5">Resource</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Classification and annotation of Indian medicinal plants</td>
+                        <td>
+                            <ul>
+                                <li><a href="http://www.flowersofindia.net/" target="_blank">Flowers of India</a></li>
+                                <li><a href="https://www.ipni.org/" target="_blank">International Plant Names Index
+                                        (IPNI)</a></li>
+                                <li><a href="https://www.iucnredlist.org/" target="_blank">IUCN Red List of Threatened
+                                        species</a></li>
+                                <li><a href="https://mpns.science.kew.org/" target="_blank">Medicinal Plants Names
+                                        Service (MPNS)</a></li>
+                                <li><a href="https://powo.science.kew.org/" target="_blank">Plants of the World Online
+                                        (POW)</a></li>
+                                <li><a href="http://www.worldfloraonline.org/" target="_blank">World Flora Online
+                                        (WFO)</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                <td>Traditional Indian medicinal formulations</td>
+                <td><ul> <li><a href="http://www.tkdl.res.in/" target="_blank">Traditional Knowledge Digital Library (TKDL)</a></li> </ul></td>
+              </tr> -->
+                    <tr>
+                        <td>Standard chemical identifiers for common names of phytochemicals</td>
+                        <td>
+                            <ul>
+                                <li><a href="https://www.ebi.ac.uk/chembl/" target="_blank">ChEMBL</a></li>
+                                <li><a href="http://www.chemspider.com/" target="_blank">ChemSpider</a></li>
+                                <li><a href="https://www.molport.com/" target="_blank">MolPort</a></li>
+                                <li><a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank">PubChem</a></li>
+                                <li><a href="https://www.surechembl.org/search/" target="_blank">SureChEMBL</a></li>
+                                <li><a href="https://zinc.docking.org/" target="_blank">ZINC database</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Computation of physicochemical, drug-like properties and ADMET properties of phytochemicals
+                        </td>
+                        <td>
+                            <ul>
+                                <li><a href="http://openbabel.org/wiki/Main_Page" target="_blank">Open Babel</a></li>
+                                <li><a href="http://www.swissadme.ch/" target="_blank">SwissADME</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Anbac-DB web interface</td>
+                        <td>
+                            <ul>
+                                <li><a href="https://getbootstrap.com/docs/4.0/" target="_blank">Bootstrap 4</a></li>
+                                <li><a href="http://js.cytoscape.org/" target="_blank">Cytoscape.js</a></li>
+                                <li><a href="https://datatables.net/" target="_blank">DataTables</a></li>
+                                <li><a href="https://www.javascript.com/" target="_blank">JavaScript</a></li>
+                                <li><a href="https://mariadb.org/" target="_blank">MariaDB</a></li>
+                                <li><a href="https://www.python.org/" target="_blank">Python</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Python packages and scripts</td>
+                        <td>
+                            <ul>
+                                <li><a href="https://www.djangoproject.com/" target="_blank">Django</a></li>
+                                <li><a href="https://numpy.org/" target="_blank">NumPy</a></li>
+                                <li><a href="https://pandas.pydata.org/" target="_blank">Pandas</a></li>
+                                <li><a href="https://www.rdkit.org/" target="_blank">RDKit</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        window.onscroll = function () { scrollFunction() };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        $(document).ready(function () {
+            $(".sampleTable").fancyTable({
+                sortColumn: 0,
+                pagination: true,
+                perPage: 10,
+                globalSearch: true
+            });
+        });
+
+    </script>
+
+</div>
+
+{% endblock %}

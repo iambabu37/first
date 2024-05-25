@@ -1,10 +1,137 @@
 {% extends 'my_app/base.html' %}
 
+{% load static %}
+
 {% block help %}
 
-<div class="container text-black pt-5 mt-5">
-	
-	<h2 class= "">i am the help here </h2>
-</div>
+<style>
+	img {
+		border-radius: 10px !important;
+		margin-bottom: 30px;
+		margin-top: 30px;
+	}
 
-{% endblock %}
+	#fixed-column {
+		position: sticky;
+		top: 100px;
+
+	}
+	h3 ~ p {
+      text-indent: 50px;
+	  font-size: 18px;
+
+    }
+	h3~p::first-letter {
+      font-size: 26px;
+      font-weight: bold; /* Optional: Make the first letter bold */
+    }
+
+	.list-group .list-group-item {
+		border-radius: 12px;
+
+	}
+
+	.list-group-item:hover {
+		background-color: rgb(0, 110, 255);
+		color: white;
+		transition: 0.15s;
+	}
+
+	section {
+		padding-top: 30px!important;
+		padding-bottom:10px!important;
+	}
+</style>
+
+<div class="container text-black pt-5 mt-5" id="search">
+
+	<h2 class="text-success" style="text-align: center;"><strong>How to use the Anbac-DB</strong></h2>
+	<div class="row">
+		<div class="col-md-9 ">
+				<div class="row">
+					<div class="col-md-12 mt-3 ">
+						<div>
+							<h3><strong>Home</strong></h3>
+							<p>       This is the homepage of our website, where users can seamlessly navigate through distinct sections to access information tailored to their specific needs. The website features five main tabs, namely Home, Search, Plants, Acknowledgment, How to Use, and Contact. Each tab is intricately designed to provide a user-friendly experience. The Home section serves as the central hub, offering an overview of the website's content. The Search tab is a versatile tool for both general inquiries and specific searches based on plant names. In the Plants section, users can explore an extensive repository of information on medicinal plants, encompassing scientific data and active principles. The Acknowledgment tab expresses gratitude to contributors who played a pivotal role in the development of this resource. 
+						</p>
+							<img src="{% static 'image/home.png' %}" alt="Home page" class="img-fluid">
+						<P>
+							For guidance on navigating the website effectively, users can refer to the How to Use section. Lastly, the Contact tab serves as a communication channel for inquiries, feedback, or any assistance required during the user's visit. Whether conducting a general search or seeking information on specific plants, our website is thoughtfully structured to meet the diverse informational needs of our users. We invite you to explore and gain valuable insights into the realm of medicinal plants.
+						</P>
+						</div>
+					</div>
+				</div>
+			<section id="searchresult">
+				<div class="row">
+					<div class="col-md-12 mt-5">
+						<h3> <strong>Search Result </strong></h3>
+						<P>The Search tab on our website serves as a powerful and versatile tool, empowering users to conduct inquiries tailored to their specific interests. Whether embarking on a general search or seeking detailed information based on compund names, this feature provides a streamlined and efficient search experience. Users can enter relevant keywords or compound name  to initiate their exploration, ensuring a quick and targeted retrieval of information from our comprehensive database. </P>
+						<img src="{% static 'image/search.png' %}" alt="Home page" class="img-fluid">
+						<P>The Search tab is designed to enhance user accessibility and facilitate a seamless navigation experience, ensuring that users can effortlessly locate the precise information they seek within our wealth of content.</P>
+					</div>
+				</div>
+			</section>
+
+			<section id="comopounddetail">
+				<div class="row">
+					<div class="col-md-12 mt-5">
+						<h3><strong>Compound Detail</strong></h3>
+						<P>The Compound Detail page on our website offers a comprehensive and detailed exploration of individual chemical compounds found in medicinal plants. This dedicated section provides users with in-depth information, allowing them to delve into the intricacies of each compound. Users can access essential details such as the compound's 2D structure, molecular weight, molecular formula, smiles,sdf file,ichikey,inchi, and so on.facilitating a nuanced understanding of its chemical properties.The Compound Detail page on our website offers a comprehensive and detailed exploration of individual chemical compounds found in medicinal plants. </P>
+						<img src="{% static 'image/compound.png' %}" alt="Home page" class="img-fluid">
+						<p>This dedicated section provides users with in-depth information, allowing them to delve into the intricacies of each compound. Users can access essential details such as the compound's 2D structure, molecular weight, molecular formula, and a unique compound ID, facilitating a nuanced understanding of its chemical properties.</p>
+					</div>
+				</div>
+			</section>
+			<section id="plant">
+				<div class="row">
+					<div class="col-md-12 mt-5 ">
+						<h3><strong>Plant</strong></h3>
+						<p>In Plant Section of our website is a comprehensive repository dedicated to providing extensive information on various medicinal plants. Users can explore a wealth of knowledge organized in a user-friendly manner, focusing on scientific data, active principles, and diverse applications of each plant. Scientific data encompasses essential categories such as plant names, species, family, isolated compounds, activities. Users can navigate through these categories to gain a holistic understanding of each medicinal plant's characteristics.</p>
+						<img src="{% static 'image/plant.png' %}" alt="Home page" class="img-fluid">
+						
+					</div>
+				</div>
+			</section>
+			<section id="plantdetail">
+				<div class="row">
+					<div class="col-md-12 mt-5">
+						<h3><strong>Plant Detail</strong></h3>
+						<img src="{% static 'image/plantdetail.png' %}" alt="Home page" class="img-fluid">
+						<p>In addition to providing factual data, the Plant Detail Section incorporates articles that delve into the antibacterial activities of bioactive compounds, with references to original papers. This contextualizes the information and enhances the user's understanding of the practical applications of these medicinal plants.</p>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div class=col-md-3>
+			<div class="p text-end" id="fixed-column">
+				<div class="d-flex ">
+					<h4 class="">Details</h4>
+				</div>
+				<div class="list-group mt-2 d-flex " style="border: 1px;">
+					<a href="#search"><button type="button" class="list-group-item list-group-item-action "
+							aria-current="true"><strong>Search</strong>
+
+						</button></a>
+					<a href="#searchresult" style="text-decoration: none;" id="btn"><button type="button"
+							class="list-group-item list-group-item-action "><strong>Search Result</strong></button>
+					</a>
+					<a href="#comopounddetail"><button type="button"
+							class="list-group-item list-group-item-action"><strong>Compound</strong>
+						</button></a>
+					<a href="#plant"><button type="button" class="list-group-item list-group-item-action"><strong>
+								Plant
+							</strong></button>
+					</a>
+					<a href="#plantdetail"><button type="button"
+							class="list-group-item list-group-item-action"><strong>Plant Detail</strong></button>
+					</a>
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+
+		{% endblock %}

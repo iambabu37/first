@@ -144,7 +144,7 @@ def download_sdf(request, name,id):
 
 def advanced_search(request):
      
-     return render(request,"my_app/advanced_search.html")
+     return render(request,"my_app/acknowledgement.html")
 
 def target(request,name):
      obj = get_object_or_404(Target,name = name)

@@ -1,16 +1,3 @@
-/**
-* Template Name: Logis
-* Updated: Sep 18 2023 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# Set main reusable colors and fonts using CSS variables
-# Learn more about CSS variables at https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
---------------------------------------------------------------*/
-/* Fonts */
 :root {
   --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-primary: "Inter", sans-serif;
@@ -19,9 +6,9 @@
 
 /* Colors */
 :root {
-  --color-default: #e1e6f0;
+  --color-default: #0f285c;
    --color-primary: #0d42ff; 
-  --color-secondary: #e6ecf5;
+  --color-secondary: #051e42;
 }
 
 /* Smooth scroll behavior */
@@ -295,7 +282,7 @@ section {
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 80px;
   margin-right: 6px;
 }
 
@@ -1703,7 +1690,6 @@ section {
 .hero {
   width: 100%;
   min-height: 50vh;
-  background:none;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1803,7 +1789,7 @@ section {
 --------------------------------------------------------------*/
 .footer {
   font-size: 14px;
-  background-color: var(--color-secondary);
+  background-color: rgb(5, 5, 70);
   padding: 50px 0;
   color: white;
 }
