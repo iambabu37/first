@@ -1,0 +1,252 @@
+title
+1. introduction
+2. global impact
+3. methodology
+
+
+class Phytochemical(models.Model):
+    name = models.CharField(max_length=255,null = True,blank=True)
+    synonymous_names = models.TextField(null = True,blank=True)
+    external_identifiers = models.TextField(null = True,blank=True)
+    smiles = models.TextField(null = True,blank=True)
+    inchi = models.TextField(null = True,blank=True)
+    inchikey = models.TextField(null = True,blank=True)
+    deepsmiles = models.TextField(null = True,blank=True)
+    functional_groups = models.TextField(null = True,blank=True)
+    classyfire_kingdom = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_superclass = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_class = models.CharField(max_length=255,null = True,blank=True)
+    classyfire_subclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_biosynthetic_pathway = models.TextField(null = True,blank=True)
+    np_classifier_superclass = models.CharField(max_length=255,null = True,blank=True)
+    np_classifier_class = models.CharField(max_length=255,null = True,blank=True)
+    np_likeness_score = models.FloatField(null = True,blank=True)
+    mkproperties = models.OneToOneField(McProp, on_delete=models.CASCADE)
+    dkproperties = models.OneToOneField(DkProp,on_delete = models.CASCADE)
+    admeproperties = models.OneToOneField(ADMEProp,on_delete = models.CASCADE)
+    
+
+##
+
+Marmelosin
+$Hypericin
+Achilleine
+Cuminaldehyde
+Lantadene A
+
+## dupliarte
+Carvacrol
+berberine
+
+# doubt 
+glycyrrhizin
+
+
+# compounds 
+
+Allium sativum
+
+Antibacterial Properties of Organosulfur Compounds of Garlic (Allium sativum)
+https://doi.org/10.3389/fmicb.2021.613077
+IMPHY001846
+IMPHY001879
+IMPHY005399
+IMPHY011480
+IMPHY005804
+
+
+Achillea millefolium
+
+REVIEW Pharmacognosy, Phytochemistry and Pharmacological Properties of Achillea millefolium L.: A Review
+https://doi.org/10.1002/ptr.5840
+
+Terpinolene,IMPHY011599
+1,8-cineole,IMPHY010072
+γ-terpinene,IMPHY003982
+thujone,IMPHY011901
+Camphor,IMPHY012036
+borneol,IMPHY011590
+
+Allium cepa
+
+Antimicrobial and antioxidant activity of crude onion (Allium cepa, L.) extracts
+https://doi.org/10.1111/j.1365-2621.2009.02169.x
+
+Kaempferol  IMPHY004388
+https://doi.org/10.1002/1099-1573(200102)15:1%3C39::AID-PTR684%3E3.0.CO;2-R
+Activity of plant flavonoids against antibiotic-resistant bacteria
+
+Aegle marmelos
+
+Bioactive compounds of Aegle marmelos L., medicinal values and its food applications: A critical review
+
+https://doi.org/10.1002/ptr.6934
+
+1-Dodecanol,IMPHY007100
+4-Isopropylbenzaldehyde,IMPHY003545
+
+
+Andrographis paniculata
+
+Andrographis paniculata (Burm.f.) Nees: Traditional uses, phytochemistry, pharmacological properties and quality control/quality assurance
+
+https://doi.org/10.1016/j.jep.2021.114054
+
+Andrograpanin,IMPHY001871
+14-Deoxyandrographolide,IMPHY001884
+Andrographidin A,IMPHY002527
+Chlorogenic acid,IMPHY011844
+3,4-Dihydroxybenzoic acid,IMPHY011883
+Ferulic acid,IMPHY011802
+
+
+Artemisia annua
+
+Essential Oil of Artemisia annua L.: An Extraordinary Component with Numerous Antimicrobial Properties
+https://doi.org/10.1155/2014/159819
+
+3,3,6-Trimethylhepta-1,5-dien-4-one IMPHY007113
+alpha-Pinene,IMPHY012061
+Eucalyptol,IMPHY010072
+Camphor,IMPHY012036
+
+Azadirachta indica
+
+Azadirachta indica (neem): a plant of multiple biological and pharmacological activities
+https://link.springer.com/article/10.1007/s11101-009-9144-6
+
+Nimbidin 	IMPHY006854
+	(1R,2R,5R,6S,10R,11S,12R,15R,16R,18S,19R)-6-(furan-3-yl)-11,16,18-trihydroxy-1,5,10,15-tetramethyl-13-oxapentacyclo[10.6.1.02,10.05,9.015,19]nonadec-8-en-4-one
+Azadirone IMPHY000155
+Mahmoodin IMPHY009353
+Margolone IMPHY013920
+    (4bS,8aS)-3,4b,8,8-tetramethyl-10-oxo-6,7,8a,9-tetrahydro-5H-phenanthrene-2-carboxylic Acid
+Margolonone IMPHY013919
+isomargolonone IMPHY005303
+    (4bS,8aR)-2,4b,8,8-tetramethyl-7,10-dioxo-5,6,8a,9-tetrahydrophenanthrene-3-carboxylic Acid
+Nimbolide  IMPHY000663
+	Methyl 2-[6-(furan-3-yl)-7,9,11,15-tetramethyl-12,16-dioxo-3,17-dioxapentacyclo[9.6.1.02,9.04,8.015,18]octadeca-7,13-dien-10-yl]acetate
+
+Normal phytcompounds
+Review on plant antimicrobials:
+a mechanistic viewpoint
+https://doi.org/10.1186/s13756-019-0559-6
+
+
+Comprehensive review of antimicrobial activities of plant flavonoids
+https://link.springer.com/article/10.1007/s11101-018-9591-z
+
+Phytochemicals as Invaluable Sources of Potent Antimicrobial
+Agents to Combat Antibiotic Resistance
+https://doi.org/10.3390/life13040948
+
+Apigenin,IMPHY004661
+Honokiol,IMPHY006683
+Sanguinarine,IMPHY004539
+Conessine,IMPHY012520
+Epigallocatechin,IMPHY011737
+Cianidanol,IMPHY014854
+3,4-Dihydroxybenzoic acid,IMPHY011883
+Hydroquinone,IMPHY006959 
+Osthole,IMPHY001134
+Taxifolin,IMPHY011967
+Piperine,IMPHY004192
+8-Prenylnaringenin,IMPHY000819
+Farnesol,IMPHY011632
+Chebulagic acid,IMPHY004799
+Stigmasterol,IMPHY014842
+Chlorogenic acid,IMPHY011844
+E-Guggulsterone,IMPHY003654
+Isoliquiritigenin,IMPHY006489
+Celastrol,IMPHY002055
+Cryptotanshinone,IMPHY007798
+Magnolol,IMPHY006690
+Evocarpine,IMPHY010160
+Ursolic acid,IMPHY011880
+Ferulic acid,IMPHY011802
+Morusin,IMPHY005464
+Lonicerin,IMPHY005547 
+Galangin,IMPHY005434
+Artemisinin,IMPHY007168
+Punicalagin,IMPHY006904
+Aloe emodin,IMPHY000333
+Skullcapflavone II,IMPHY009523
+Sulforaphane,IMPHY010559
+Arjunolic acid,IMPHY011627
+Terminolic acid,IMPHY003867
+Asiatic acid,IMPHY003657
+Cinnamic acid,IMPHY011960
+Diosgenin,IMPHY003681
+Rhein,IMPHY002157
+Betulinic acid,IMPHY012003
+Sakuranetin,IMPHY012232
+Protoanemonin,IMPHY007261
+Piceatannol,IMPHY007094
+Reserpine,IMPHY012049
+Tomatidine,IMPHY004110
+Isoliquirtigenin,IMPHY006489
+Fisetin,IMPHY005433
+Butein,IMPHY004717
+Coumarin,IMPHY003490
+Plumbagin,IMPHY001191
+Hibiscetin,IMPHY001582
+Terchebulin,IMPHY005412
+(12R,15R,32S,33R)-4,5,6,14,20,21,22,25,26,27,38,39,40,43,44,55-hexadecahydroxy-2,10,13,16,31,34,46,53-octaoxaundecacyclo[46.7.1.03,8.012,33.015,32.018,23.024,29.036,41.042,51.045,50.049,54]hexapentaconta-1(55),3,5,7,18,20,22,24,26,28,36,38,40,42,44,48(56),49(54),50-octadecaene-9,17,30,35,47,52-hexone
+Norwogonin,IMPHY005493
+3-Hydroxyflavone,IMPHY000011
+quercetin 3-O-glucuronide,IMPHY011618
+Afzelin,IMPHY011919 Kaempferol 3-rhamnoside
+Apigenin,IMPHY004661
+Genistein,IMPHY004643
+Proanthocyanidin,IMPHY000622
+Lupanine,IMPHY007309 
+(+)-13alpha-Hydroxylupanine IMPHY007014
+albine,IMPHY004842
+(1R,2R,9R,12R)-12-prop-2-enyl-7,11-diazatricyclo[7.3.1.02,7]tridec-5-en-4-one
+Carnosol,IMPHY011239
+Chelerythrine chloride,IMPHY012217
+17-Pentatriacontene,IMPHY014088
+D-Fructose,IMPHY014916
+beta-Hydrastine,IMPHY005632
+Glabrol,IMPHY001866
+Chanoclavine,IMPHY011833
+Solasodine,IMPHY004033
+Lysergol,IMPHY003786
+Berteroin,IMPHY005488
+Hirsutin,IMPHY010350
+Erysoline,IMPHY013323 
+Allyl isothiocyanate,IMPHY006321
+Benzyl isothiocyanate,IMPHY005071
+Phenethyl isothiocyanate,IMPHY005144
+biochanin A,IMPHY008707
+Isorhamnetin,IMPHY008724
+Chrysosplenol-D,IMPHY004379
+Silibinin,IMPHY011703
+Biochanin A,IMPHY008707
+Genistein,IMPHY004643
+Orobol,IMPHY004600
+Chebulinic acid,IMPHY010827
+4-Hydroxycinnamic acid,IMPHY011974
+Apigenin,IMPHY004661
+8-Prenylnaringenin,IMPHY000819
+Naringetol,IMPHY010550
+Eriodictyol,IMPHY004038
+Morin,IMPHY005463
+Aegelinol,IMPHY012643
+galbanic acid,IMPHY011235
+3-[(1R,2S,3S)-2,3-dimethyl-2-[(2-oxochromen-7-yl)oxymethyl]-6-propan-2-ylidenecyclohexyl]propanoic acid
+Farnesol,IMPHY011632
+Nerolidol,IMPHY015022
+Dehydroabietic acid,IMPHY010187
+(1S,4As,10aR)-1,4a-dimethyl-7-propan-2-yl-2,3,4,9,10,10a-hexahydrophenanthrene-1-carboxylic acid
+alpha-Amyrin,IMPHY011619
+Rutin,IMPHY015047
+Pinocembrin,IMPHY007196
+Dihydrokaempferol,IMPHY002073
+Isobavachalcone,IMPHY004621
+Panduratin A,IMPHY007107
+Phloretin,IMPHY000813
+Licochalcone A,IMPHY004374
+Diosmetin,IMPHY005431
+Myricetin,IMPHY005471
+Kaempferide,IMPHY005462
